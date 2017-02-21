@@ -1,0 +1,40 @@
+@extends('admin.template.main')
+
+@section('titulo', 'Lista de causas registradas')
+
+@section('contenido')
+<div class="row">
+  <div class="col-md-12 ">
+    <a href="{{ route('admin.causas.create')}}" class="btn btn-info">Agregar Causa</a>
+    <table class="table table-striped ">
+        <thead>
+            <th>ID</th>
+            <th>causa</th>
+            <th>falla</th>
+            <th>Descripción</th>
+            <th>Accion</th>
+        </thead>
+        <tbody>
+            @foreach($causas as $causa)
+                <tr>
+                    <td>{{ $causa->id }}</td>
+                    <td>{{ $causa->causa }}</td>
+                    <td>{{ $causa->descripcion }}</td>
+                    <td>{{ $causa->falla->falla }}</td>
+                    <td> <a href="{{ route('admin.causas.destroy', $causa->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar la causa ?')" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>
+                         </a>
+                         <a href="{{ route('admin.causas.edit', $causa->id) }}" class=" btn btn-warning">
+                           <span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>
+                         </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="text-center">
+      {!! $causas->render() !!}
+    </div>
+  </div>
+</div>
+@endsection
