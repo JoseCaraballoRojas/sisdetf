@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Agregar un tipo de fallas')
+@section('htmlheader_title', 'Agregar un tipo de fallas')
 
-@section('contenido')
+@section('main-content')
 
 <div class="row">
 <div class="col-md-10 col-md-offset-1 ">

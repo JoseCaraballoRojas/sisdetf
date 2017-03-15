@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de los tipos registrados')
+@section('htmlheader_title', 'Lista de los tipos registrados')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.tipos.create')}}" class="btn btn-info">Agregar tipo</a>

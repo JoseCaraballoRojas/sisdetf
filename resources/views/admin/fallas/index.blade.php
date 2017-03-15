@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de fallas registradas')
+@section('htmlheader_title', 'Lista de fallas registradas')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.fallas.create')}}" class="btn btn-info">Agregar falla</a>

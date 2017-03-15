@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de las caracteristicas registradas')
+@section('htmlheader.app', 'Lista de las caracteristicas registradas')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.caracteristicas.create')}}" class="btn btn-info">Agregar Caracteristica</a>

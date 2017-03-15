@@ -1,9 +1,10 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Crear Usuario')
+@section('htmlheader_title')
+	Crear Usuario
+@endsection
 
-@section('contenido')
-    
+@section('main-content')
 <div class="row">
 <div class="col-md-10 col-md-offset-1 ">
 <div class="panel panel-primary">

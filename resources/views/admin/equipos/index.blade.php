@@ -1,11 +1,13 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de equipos registrados')
+@section('htmlheader_title', 'Lista de equipos registrados')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
-    <a href="{{ route('admin.equipos.create')}}" class="btn btn-info">Registrar Equipos</a>
+    <a href="{{ route('admin.equipos.create')}}" class="btn btn-info">
+      <i class="fa fa-plus" aria-hidden="true"></i> Registrar Equipos
+    </a>
     <table class="table table-striped ">
         <thead>
             <th>ID</th>

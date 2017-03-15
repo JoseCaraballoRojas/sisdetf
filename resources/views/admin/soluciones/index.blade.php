@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de soluciones registradas')
+@section('htmlheader_title', 'Lista de soluciones registradas')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.soluciones.create')}}" class="btn btn-info">Agregar Solución</a>

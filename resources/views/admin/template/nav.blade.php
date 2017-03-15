@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-md-12 ">
-		<nav class="navbar navbar-inverse ">
+		<nav class="navbar navbar-inverse navbar-static-top ">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<b><a class="navbar-brand" >Sisdetf</a></b>
+					<p class="navbar-brand" >Sisdetf</p>
 				</div>
 				<div class="collapse navbar-collapse " >
 					<b>
@@ -17,28 +17,28 @@
 								<a href="{{ route('admin.usuarios.index')}}"> <span class="fa fa-users" aria-hidden="true"> Usuarios</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.marcas.index')}}"> <span class="fa fa-users" aria-hidden="true"> Marcas</a>
+								<a href="{{ route('admin.marcas.index')}}"> <span class="fa fa-microchip" aria-hidden="true"> Marcas</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.modelos.index')}}"> <span class="fa fa-users" aria-hidden="true"> Modelos</a>
+								<a href="{{ route('admin.modelos.index')}}"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"> Modelos</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.equipos.index')}}"> <span class="fa fa-users" aria-hidden="true"> Equipos</a>
+								<a href="{{ route('admin.equipos.index')}}"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.tipos.index')}}"> <span class="fa fa-users" aria-hidden="true"> Tipos</a>
+								<a href="{{ route('admin.tipos.index')}}"> <span class="fa fa-cubes" aria-hidden="true"> Tipos</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.fallas.index')}}"> <span class="fa fa-users" aria-hidden="true"> Fallas</a>
+								<a href="{{ route('admin.fallas.index')}}"> <span class="fa fa-exclamation-triangle" aria-hidden="true"> Fallas</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.caracteristicas.index')}}"> <span class="fa fa-users" aria-hidden="true"> Caracteristicas</a>
+								<a href="{{ route('admin.caracteristicas.index')}}"> <span class="fa fa-tags" aria-hidden="true"> Caracteristicas</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.causas.index')}}"> <span class="fa fa-users" aria-hidden="true"> Causas</a>
+								<a href="{{ route('admin.causas.index')}}"> <span class="fa fa-thumb-tack" aria-hidden="true"> Causas</a>
 						</li>
 						<li>
-								<a href="{{ route('admin.soluciones.index')}}"> <span class="fa fa-users" aria-hidden="true"> Soluciones</a>
+								<a href="{{ route('admin.soluciones.index')}}"> <span class="fa fa-cogs" aria-hidden="true"> Soluciones</a>
 						</li>
 						<li>
 							<a href="#" class="fa fa-shield dropdown-toggle" aria-hidden="true" data-toggle="dropdown"> Seguridad <span class="caret"></span></a>

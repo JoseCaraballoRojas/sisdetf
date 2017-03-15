@@ -1,8 +1,10 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de usuarios')
+@section('htmlheader_title')
+	Lista de usuarios
+@endsection
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.usuarios.create')}}" class="btn btn-info">Crear Usuario</a>

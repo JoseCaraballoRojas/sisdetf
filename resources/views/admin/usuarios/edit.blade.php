@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Editar Usuario: ' . $usuario->nombre . '  '.$usuario->apellido)
+@section('htmlheader_title', 'Editar Usuario: ' . $usuario->nombre . '  '.$usuario->apellido)
 
-@section('contenido')
+@section('main-content')
 <div class="row">
 <div class="col-md-10 col-md-offset-1 ">
 <div class="panel panel-primary">

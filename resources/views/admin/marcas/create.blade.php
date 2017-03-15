@@ -1,9 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Agregar marca')
+@section('htmlheader_title', 'Agregar marca')
 
-@section('contenido')
-
+@section('main-content')
 <div class="row">
 <div class="col-md-10 col-md-offset-1 ">
 <div class="panel panel-primary">

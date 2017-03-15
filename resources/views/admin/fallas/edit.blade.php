@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Editar falla')
+@section('htmlheader_title', 'Editar falla')
 
-@section('contenido')
+@section('main-content')
 
 <div class="row">
 <div class="col-md-10 col-md-offset-1 ">

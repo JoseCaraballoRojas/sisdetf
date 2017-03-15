@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Usuario;
+use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -42,9 +42,8 @@ class AuthController extends Controller
 
     public function loginUsername()
     {
-        return property_exists($this, 'username') ? $this->username : 'usuario';
+       return property_exists($this, 'username') ? $this->username : 'usuario';
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -56,7 +55,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|confirmed|min:6',
         ]);
     }
 

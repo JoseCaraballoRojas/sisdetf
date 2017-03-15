@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de modelos registrados')
+@section('htmlheader_title', 'Lista de modelos registrados')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.modelos.create')}}" class="btn btn-info">Agregar modelo</a>

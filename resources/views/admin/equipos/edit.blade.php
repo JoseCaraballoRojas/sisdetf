@@ -1,11 +1,14 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Editar modelo')
+@section('htmlheader_title', 'Editar modelo')
 
-@section('contenido')
+@section('main-content')
 
 <div class="row">
-<div class="col-md-10 col-md-offset-1 ">
+<div class="col-md-12 ">
+  <a href="{{ route('admin.equipos.index')}}" class="btn btn-danger">
+    <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+  </a>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="form-signin-heading text-center"><b>Editar equipo</b></h3>
@@ -31,7 +34,6 @@
     <div class="panel-footer">
         <div class="form-group">
             {!! Form::submit('Editar', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ route('admin.equipos.index')}}" class="btn btn-info"> Regresar</a>
         </div>
     {!! Form::close() !!}
   </div>

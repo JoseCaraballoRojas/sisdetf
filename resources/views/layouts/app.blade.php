@@ -1,73 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="es">
 
-    <title>Sisdetf</title>
+@section('htmlheader')
+    @include('layouts.partials.htmlheader')
+@show
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}" >
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    @include('layouts.partials.mainheader')
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
+    @include('layouts.partials.sidebar')
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/login') }}">
-                    Sisdetf
-                </a>
-            </div>
+        @include('layouts.partials.contentheader')
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-              <!--  <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Inicio</a></li>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            @yield('main-content')
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 
-                </ul>-->
+    @include('layouts.partials.controlsidebar')
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Iniciar sesión</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->usuario }} <span class="caret"></span>
-                            </a>
+    @include('layouts.partials.footer')
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesion</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+</div><!-- ./wrapper -->
 
-    @yield('content')
+@section('scripts')
+    @include('layouts.partials.scripts')
+@show
 
-    <!-- JavaScripts -->
-    <script src="{{ asset('plugins/jquery/js/jquery-3.1.1.js') }}" ></script>
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}" ></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

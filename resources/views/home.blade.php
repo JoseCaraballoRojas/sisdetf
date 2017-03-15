@@ -1,17 +1,24 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Sisdet homef</div>
+@section('htmlheader_title')
+	Inicio
+@endsection
 
-                <div class="panel-body">
-                    Sistema Basado en conocimiento para la deteccion de fallas.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+@section('main-content')
+	<div class="container spark-screen">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">Inicio</div>
+
+					<div class="panel-body">
+							<div class="col-md-8 col-md-offset-3">
+						  	<img src="/img/logo-sisdetf.png" class="img"/>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection

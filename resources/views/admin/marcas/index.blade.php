@@ -1,8 +1,8 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Lista de marcas registradas')
+@section('htmlheader_title', 'Lista de marcas registradas')
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
     <a href="{{ route('admin.marcas.create')}}" class="btn btn-info">Agregar marca</a>
