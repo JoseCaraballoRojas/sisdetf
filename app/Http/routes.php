@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
     //rutas de usuarios...
     Route::resource('usuarios', 'UsuariosController');
     Route::get('usuario/{id}/destroy', [
