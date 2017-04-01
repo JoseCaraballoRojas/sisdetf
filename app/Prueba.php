@@ -9,4 +9,5 @@ class Prueba extends Model
     //lldlfldfldfd
     //laslalslasla
     //laslalslasla
+    dd()
 }
