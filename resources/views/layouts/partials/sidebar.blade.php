@@ -63,6 +63,7 @@
                     <li><a href="#"><i class='fa fa-users'></i> Estadisticos</a></li>
                 </ul>
             </li>
+            @if(Auth::user()->admin())
             <li class="treeview">
                 <a href="#"><i class='fa fa-users'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -71,7 +72,7 @@
                     <li><a href="#"><i class='fa fa-history'></i> Historial</a></li>
                 </ul>
             </li>
-
+            @endif
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

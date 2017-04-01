@@ -13,8 +13,8 @@
 					<div class="panel-heading">Inicio</div>
 
 					<div class="panel-body">
-							<div class="col-md-8 col-md-offset-3">
-						  	<img src="/img/logo-sisdetf.png" class="img"/>
+							<div class="col-md-8 col-md-offset-2">
+						  	<img src="/img/baner.png" class="img col-md-12"/>
 							</div>
 					</div>
 				</div>

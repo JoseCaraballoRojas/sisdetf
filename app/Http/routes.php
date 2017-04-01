@@ -15,13 +15,19 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
-    //rutas de usuarios...
-    Route::resource('usuarios', 'UsuariosController');
-    Route::get('usuario/{id}/destroy', [
-    'uses' => 'UsuariosController@destroy',
-    'as' => 'admin.usuarios.destroy'
-    ]);
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+
+    //rutas de usuarios solo con acceso para administradores ...
+    Route::group(['middleware' => 'admin'], function(){
+
+        Route::resource('usuarios', 'UsuariosController');
+        Route::get('usuario/{id}/destroy', [
+        'uses' => 'UsuariosController@destroy',
+        'as' => 'admin.usuarios.destroy'
+        ]);
+
+    });
+
 
     //rutas de marcas...
     Route::resource('marcas', 'MarcasController');
@@ -84,8 +90,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
     'uses' => 'HistorialesController@index',
     'as' => 'admin.historiales.index'
     ]);
+
+    //ruta para home
+    Route::get('/home', 'HomeController@index');
 });
 
 Route::auth();
-
-Route::get('/home', 'HomeController@index');

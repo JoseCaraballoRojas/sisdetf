@@ -28,4 +28,9 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany('App\Historial');
     }
+
+    public function admin()
+    {
+      return $this->tipo === 'administrador';
+    }
 }
