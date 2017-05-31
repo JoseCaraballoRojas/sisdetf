@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', 'Agregar solucion de una falla')
+@section('htmlheader_title', 'Agregar sugerencia de una falla')
 
 @section('main-content')
 
@@ -8,15 +8,15 @@
 <div class="col-md-10 col-md-offset-1 ">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="form-signin-heading text-center"><b>Agregar solucion de una falla</b></h3>
+    <h3 class="form-signin-heading text-center"><b>Agregar sugerencia de una falla</b></h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.soluciones.store', 'method' => 'POST' ])  !!}
 
         <div class="form-group">
-            {!! Form::label('solucion', 'Solución') !!}
+            {!! Form::label('solucion', 'Sugerencia') !!}
             {!! Form::text('solucion',null, ['class' => 'form-control',
-            'placeholder' => 'Solución', 'required']) !!}
+            'placeholder' => 'Sugerencia', 'required']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('descripcion', 'Descripción') !!}

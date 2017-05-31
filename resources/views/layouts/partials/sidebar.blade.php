@@ -51,7 +51,7 @@
                     <li><a href="{{ route('admin.tipos.index')}}"> <span class="fa fa-cubes" aria-hidden="true"> Tipos</a></li>
                     <li><a href="{{ route('admin.caracteristicas.index')}}"> <span class="fa fa-tags" aria-hidden="true"> Caracteristicas</a></li>
                     <li><a href="{{ route('admin.causas.index')}}"> <span class="fa fa-thumb-tack" aria-hidden="true"> Causas</a></li>
-                    <li><a href="{{ route('admin.soluciones.index')}}"> <span class="fa fa-cogs" aria-hidden="true"> Soluciones</a></li>
+                    <li><a href="{{ route('admin.soluciones.index')}}"> <span class="fa fa-cogs" aria-hidden="true"> Sugerencias</a></li>
                     <li><a href="{{ route('admin.fallas.index')}}"> <span class="fa fa-exclamation-triangle" aria-hidden="true"> Fallas</a></li>
                 </ul>
             </li>

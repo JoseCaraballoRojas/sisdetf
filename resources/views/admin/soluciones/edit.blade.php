@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', 'Editar Solucion de una falla')
+@section('htmlheader_title', 'Editar sugerencia de una falla')
 
 @section('main-content')
 
@@ -8,14 +8,14 @@
 <div class="col-md-10 col-md-offset-1 ">
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="form-signin-heading text-center"><b>Editar Solucion de una falla</b></h3>
+    <h3 class="form-signin-heading text-center"><b>Editar sugerencia de una falla</b></h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => ['admin.soluciones.update', $solucion ], 'method' => 'PUT' ])  !!}
         <div class="form-group">
-            {!! Form::label('solucion', 'Solucion') !!}
+            {!! Form::label('solucion', 'Sugerencia') !!}
             {!! Form::text('solucion',$solucion->solucion, ['class' => 'form-control',
-            'placeholder' => 'Solucion', 'required']) !!}
+            'placeholder' => 'Sugerencia', 'required']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('descripcion', 'Descripción') !!}
