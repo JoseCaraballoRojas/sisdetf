@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\SolucionRequest;
 use App\Solucion;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Falla;
 
@@ -52,7 +54,14 @@ class SolucionesController extends Controller
       $solucion = new Solucion($request->all());
       $solucion->save();
 
-      flash("Se ha agregado la solucion ". $solucion->solucion. " exitosamente!", 'success');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Agrego';
+      $historial->descripcion = 'Agrego la solucion ! '.$solucion->solucion.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash("Se agrego la solucion ". $solucion->solucion. " exitosamente!", 'success');
 
       return redirect()->route('admin.soluciones.index');
     }
@@ -86,6 +95,13 @@ class SolucionesController extends Controller
       $solucion->fill($request->all());
       $solucion->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito la solucion ! '.$solucion->solucion.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La solucion : ' . $solucion->solucion . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.soluciones.index');
     }
@@ -100,6 +116,14 @@ class SolucionesController extends Controller
     {
       $solucion = Solucion::find($id);
       $solucion->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro la solucion ! '.$solucion->solucion.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La solucion ' . $solucion->solucion . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.soluciones.index');
     }

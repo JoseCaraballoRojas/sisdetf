@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Usuario;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UsuariosRequest;
 
@@ -44,6 +46,13 @@ class UsuariosController extends Controller
         $usuario = new Usuario($request->all());
         $usuario->password = bcrypt($request->password);
         $usuario->save();
+
+        //resgitar la actividad en el historial del sistema
+        $historial = new Historial();
+        $historial->accion = 'Registro';
+        $historial->descripcion = 'Registro el usuario ! '.$usuario->usuario.' !';
+        $historial->idUsuarioFK = Auth::user()->id;
+        $historial->save();
 
         flash("Se ha registrado el usuario ". $usuario->usuario. " exitosamente!", 'success');
 
@@ -87,6 +96,13 @@ class UsuariosController extends Controller
         $usuario->fill($request->all());
         $usuario->save();
 
+        //resgitar la actividad en el historial del sistema
+        $historial = new Historial();
+        $historial->accion = 'Actualizo';
+        $historial->descripcion = 'Actualizo el usuario ! '.$usuario->usuario.' !';
+        $historial->idUsuarioFK = Auth::user()->id;
+        $historial->save();
+
         flash('El usuario: ' . $usuario->nombre . ' ha sido editado exitosamente', 'warning');
         return redirect()->route('admin.usuarios.index');
     }
@@ -101,6 +117,13 @@ class UsuariosController extends Controller
     {
         $usuario = Usuario::find($id);
         $usuario->delete();
+        //resgitar la actividad en el historial del sistema
+        $historial = new Historial();
+        $historial->accion = 'Elimino';
+        $historial->descripcion = 'Elimino el usuario ! '.$usuario->usuario.' !';
+        $historial->idUsuarioFK = Auth::user()->id;
+        $historial->save();
+
         flash('El usuario ' . $usuario->usuario . 'se borro exitosamente', 'danger');
         return redirect()->route('admin.usuarios.index');
     }
@@ -112,6 +135,12 @@ class UsuariosController extends Controller
       $usuario->estatus = $estatus;
       $usuario->fill($request->all());
       $usuario->save();
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Activo';
+      $historial->descripcion = 'Activo el usuario ! '.$usuario->usuario.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
 
       flash('El usuario ' . $usuario->usuario . 'se activo exitosamente', 'success');
       return redirect()->route('admin.usuarios.index');
@@ -124,6 +153,12 @@ class UsuariosController extends Controller
       $usuario->estatus = $estatus;
       $usuario->fill($request->all());
       $usuario->save();
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Desactivo';
+      $historial->descripcion = 'Desactivo el usuario ! '.$usuario->usuario.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
 
       flash('El usuario ' . $usuario->usuario . 'se desactivo exitosamente', 'danger');
       return redirect()->route('admin.usuarios.index');

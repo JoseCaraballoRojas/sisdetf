@@ -33,6 +33,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'UsuariosController@desactivar',
         'as' => 'admin.usuarios.desactivar'
         ]);
+        //ruta para mostrar historial
+        Route::get('historial/index', [
+        'uses' => 'HistorialesController@index',
+        'as' => 'admin.historiales.index'
+        ]);
 
     });
 
@@ -93,11 +98,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     'as' => 'admin.soluciones.destroy'
     ]);
 
-    //ruta para mostrar historial
-    Route::get('historial/index', [
-    'uses' => 'HistorialesController@index',
-    'as' => 'admin.historiales.index'
-    ]);
 
     //ruta para home
     Route::get('/home', 'HomeController@index');

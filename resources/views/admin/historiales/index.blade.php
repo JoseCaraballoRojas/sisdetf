@@ -1,33 +1,41 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('titulo', 'Historial de acciones en el sistema')
+@section('htmlheader_title')
+	Historial de acciones de los usuarios en el sistema
+@endsection
 
-@section('contenido')
+@section('main-content')
 <div class="row">
   <div class="col-md-12 ">
 
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
             <th>Usuario</th>
             <th>Acción</th>
             <th>Descripcion</th>
-            <th>Fecha y Hora</th>
+            <th>Fecha</th>
+            <th>Hora</th>
         </thead>
         <tbody>
+          @if (count($historiales))
             @foreach($historiales as $historial)
                 <tr>
-                    <td>{{ $historiales->id }}</td>
-                    <td>{{ $historiales->usuario->usuario }}</td>
-                    <td>{{ $historiales->accion }}</td>
-                    <td>{{ $historiales->descripcion }}</td>
-                    <td>{{ $historiales->fechaHora }}</td>
+                    <td>{{ $historial->usuario->usuario }}</td>
+                    <td>{{ $historial->accion }}</td>
+                    <td>{{ $historial->descripcion }}</td>
+                    <td>{{ $historial->created_at->format('d-m-y') }}</td>
+										<td>{{ $historial->created_at->format('h:m:s') }}</td>
                 </tr>
             @endforeach
+          @else
+            <tr>
+                <td colspan="5"><em>No se ecnontraron registros en la base de datos</em></td>
+            </tr>
+        @endif
         </tbody>
     </table>
     <div class="text-center">
-      {!! $modelos->render() !!}
+      {!! $historiales->render() !!}
     </div>
   </div>
 </div>

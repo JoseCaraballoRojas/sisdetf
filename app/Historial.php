@@ -9,7 +9,7 @@ class Historial extends Model
   protected $table = 'historiales';
 
   protected $fillable = [
-      'accion ', 'descripcion', 'fechaHora', 'idUsuarioFK'
+      'accion ', 'descripcion', 'fechaHora', 'idUsuarioFK', 'usuario'
   ];
 
   public function usuario()

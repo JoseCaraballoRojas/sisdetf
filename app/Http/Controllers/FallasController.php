@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\FallaRequest;
 use App\Falla;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Tipo;
 
@@ -53,7 +55,14 @@ class FallasController extends Controller
       $falla = new Falla($request->all());
       $falla->save();
 
-      flash("Se ha agregado la falla ". $falla->falla. " exitosamente!", 'success');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Agrego';
+      $historial->descripcion = 'Agrego la falla ! '.$falla->falla.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash("Se agrego la falla ". $falla->falla. " exitosamente!", 'success');
 
       return redirect()->route('admin.fallas.index');
     }
@@ -98,6 +107,13 @@ class FallasController extends Controller
       $falla->fill($request->all());
       $falla->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito la falla ! '.$falla->falla.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La falla : ' . $falla->falla . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.fallas.index');
     }
@@ -112,6 +128,14 @@ class FallasController extends Controller
     {
       $falla = Falla::find($id);
       $falla->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro la falla ! '.$falla->falla.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('LA falla ' . $falla->falla . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.fallas.index');
     }

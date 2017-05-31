@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\TipoRequest;
 use App\Tipo;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 class TiposController extends Controller
 {
@@ -42,7 +44,14 @@ class TiposController extends Controller
       $tipo = new Tipo($request->all());
       $tipo->save();
 
-      flash('Se ha agregado el tipo ' . $tipo->tipo . 'exitosamente!', 'danger');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Agrego';
+      $historial->descripcion = 'Agrego el tipo ! '.$tipo->tipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash('Se agrego el tipo ' . $tipo->tipo . 'exitosamente!', 'danger');
       return redirect()->route('admin.tipos.index');
     }
 
@@ -82,6 +91,13 @@ class TiposController extends Controller
       $tipo->fill($request->all());
       $tipo->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito el tipo ! '.$tipo->tipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El tipo: ' . $tipo->tipo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.tipos.index');
     }
@@ -96,6 +112,14 @@ class TiposController extends Controller
     {
       $tipo = Tipo::find($id);
       $tipo->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro el tipo ! '.$tipo->tipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El tipo ' . $tipo->tipo . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.tipos.index');
     }

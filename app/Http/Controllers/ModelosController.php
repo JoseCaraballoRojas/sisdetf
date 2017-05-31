@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ModeloRequest;
 use App\Modelo;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Marca;
 
@@ -52,7 +54,14 @@ class ModelosController extends Controller
       $modelo = new Modelo($request->all());
       $modelo->save();
 
-      flash("Se ha agregado el modelo ". $modelo->modelo. " exitosamente!", 'success');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Agrego';
+      $historial->descripcion = 'Agrego el modelo ! '.$modelo->modelo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash("Se agrego el modelo ". $modelo->modelo. " exitosamente!", 'success');
 
       return redirect()->route('admin.modelos.index');
     }
@@ -98,6 +107,13 @@ class ModelosController extends Controller
       $modelo->fill($request->all());
       $modelo->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito el modelo ! '.$modelo->modelo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El modelo : ' . $modelo->modelo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.modelos.index');
     }
@@ -112,6 +128,14 @@ class ModelosController extends Controller
     {
       $modelo = Modelo::find($id);
       $modelo->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro el modelo ! '.$modelo->modelo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El modelo ' . $modelo->modelo . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.modelos.index');
     }

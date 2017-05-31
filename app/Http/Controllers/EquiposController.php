@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\EquipoRequest;
 use App\Equipo;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Marca;
 use App\Modelo;
@@ -54,7 +56,14 @@ class EquiposController extends Controller
       $equipo = new Equipo($request->all());
       $equipo->save();
 
-      flash("Se ha registrado el equipo ". $equipo->equipo. " exitosamente!", 'success');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Registro';
+      $historial->descripcion = 'Registro el equipo ! '.$equipo->equipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash("Se registro el equipo ". $equipo->equipo. " exitosamente!", 'success');
 
       return redirect()->route('admin.equipos.index');
     }
@@ -102,6 +111,13 @@ class EquiposController extends Controller
       $equipo->fill($request->all());
       $equipo->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito el equipo ! '.$equipo->equipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El equipo : ' . $equipo->equipo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.equipos.index');
     }
@@ -116,6 +132,14 @@ class EquiposController extends Controller
     {
       $equipo = Equipo::find($id);
       $equipo->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro el equipo ! '.$equipo->equipo.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('El equipo ' . $equipo->equipo . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.equipos.index');
     }

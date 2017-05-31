@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CausaRequest;
 use App\Causa;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 use App\Falla;
 
@@ -52,7 +54,14 @@ class CausasController extends Controller
       $causa = new Causa($request->all());
       $causa->save();
 
-      flash("Se ha agregado la causa ". $causa->causa. " exitosamente!", 'success');
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Agrego';
+      $historial->descripcion = 'Agrego la causa ! '.$causa->causa.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
+      flash("Se agregado la causa ". $causa->causa. " exitosamente!", 'success');
 
       return redirect()->route('admin.causas.index');
     }
@@ -86,6 +95,13 @@ class CausasController extends Controller
       $causa->fill($request->all());
       $causa->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito la causa ! '.$causa->causa.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La causa : ' . $causa->causa . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.causas.index');
     }
@@ -100,6 +116,14 @@ class CausasController extends Controller
     {
       $causa = Causa::find($id);
       $causa->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro la causa ! '.$causa->causa.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La causa ' . $causa->causa . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.causas.index');
     }

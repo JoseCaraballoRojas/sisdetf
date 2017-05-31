@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\MarcaRequest;
 use App\Marca;
+use App\Historial;
+use Auth;
 use Laracasts\Flash\Flash;
 
 
@@ -44,7 +46,14 @@ class MarcasController extends Controller
         $marca = new Marca($request->all());
         $marca->save();
 
-        flash("Se ha agregado la marca ". $marca->marca. " exitosamente!", 'success');
+        //resgitar la actividad en el historial del sistema
+        $historial = new Historial();
+        $historial->accion = 'Agrego';
+        $historial->descripcion = 'Agrego la marca ! '.$marca->marca.' !';
+        $historial->idUsuarioFK = Auth::user()->id;
+        $historial->save();
+
+        flash("Se agrego la marca ". $marca->marca. " exitosamente!", 'success');
 
         return redirect()->route('admin.marcas.index');
     }
@@ -85,6 +94,13 @@ class MarcasController extends Controller
       $marca->fill($request->all());
       $marca->save();
 
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Edito';
+      $historial->descripcion = 'Edito la marca ! '.$marca->marca.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La marca: ' . $marca->marca . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.marcas.index');
     }
@@ -99,6 +115,14 @@ class MarcasController extends Controller
     {
       $marca = Marca::find($id);
       $marca->delete();
+
+      //resgitar la actividad en el historial del sistema
+      $historial = new Historial();
+      $historial->accion = 'Borro';
+      $historial->descripcion = 'Borro la marca ! '.$marca->marca.' !';
+      $historial->idUsuarioFK = Auth::user()->id;
+      $historial->save();
+
       flash('La marca ' . $marca->marca . 'se borro exitosamente', 'danger');
       return redirect()->route('admin.marcas.index');
     }
