@@ -44,7 +44,7 @@ class MarcasController extends Controller
         $marca = new Marca($request->all());
         $marca->save();
 
-        Flash::success("Se ha agregado la marca ". $marca->marca. " exitosamente!");
+        flash("Se ha agregado la marca ". $marca->marca. " exitosamente!", 'success');
 
         return redirect()->route('admin.marcas.index');
     }
@@ -85,7 +85,7 @@ class MarcasController extends Controller
       $marca->fill($request->all());
       $marca->save();
 
-      Flash::warning('La marca: ' . $marca->marca . ' ha sido editada exitosamente');
+      flash('La marca: ' . $marca->marca . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.marcas.index');
     }
 

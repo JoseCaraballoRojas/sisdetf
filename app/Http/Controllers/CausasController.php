@@ -52,7 +52,7 @@ class CausasController extends Controller
       $causa = new Causa($request->all());
       $causa->save();
 
-      Flash::success("Se ha agregado la causa ". $causa->causa. " exitosamente!");
+      flash("Se ha agregado la causa ". $causa->causa. " exitosamente!", 'success');
 
       return redirect()->route('admin.causas.index');
     }
@@ -86,7 +86,7 @@ class CausasController extends Controller
       $causa->fill($request->all());
       $causa->save();
 
-      Flash::warning('La causa : ' . $causa->causa . ' ha sido editada exitosamente');
+      flash('La causa : ' . $causa->causa . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.causas.index');
     }
 

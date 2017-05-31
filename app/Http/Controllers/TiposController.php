@@ -42,8 +42,7 @@ class TiposController extends Controller
       $tipo = new Tipo($request->all());
       $tipo->save();
 
-      Flash::success("Se ha agregado el tipo ". $tipo->tipo. " exitosamente!");
-
+      flash('Se ha agregado el tipo ' . $tipo->tipo . 'exitosamente!', 'danger');
       return redirect()->route('admin.tipos.index');
     }
 
@@ -83,7 +82,7 @@ class TiposController extends Controller
       $tipo->fill($request->all());
       $tipo->save();
 
-      Flash::warning('El tipo: ' . $tipo->tipo . ' ha sido editado exitosamente');
+      flash('El tipo: ' . $tipo->tipo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.tipos.index');
     }
 

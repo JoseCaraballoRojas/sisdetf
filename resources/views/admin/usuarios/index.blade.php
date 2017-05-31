@@ -7,7 +7,9 @@
 @section('main-content')
 <div class="row">
   <div class="col-md-12 ">
-    <a href="{{ route('admin.usuarios.create')}}" class="btn btn-info">Crear Usuario</a>
+    <a href="{{ route('admin.usuarios.create')}}" class="btn btn-info">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+			Crear Usuario</a>
     <table class="table table-striped">
         <thead>
             <th>ID</th>
@@ -27,9 +29,20 @@
                     <td>{{ $usuario->apellido }}</td>
                     <td>{{ $usuario->tipo }}</td>
                     <td>{{ $usuario->estatus }}</td>
-                    <td> <a href="{{ route('admin.usuarios.destroy', $usuario->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar el usuario ?')" class="btn btn-danger">
+                    <td>
+											<a href="{{ route('admin.usuarios.activar', $usuario->id) }}"
+												 class="btn btn-success {{ $usuario->estatus == 'activo' ? 'disabled' : '' }}"
+												 title="Activar Usuario">
+	                          <span class="glyphicon glyphicon-ok" aria-hidden="true" ></span>
+	                    </a>
+											<a href="{{ route('admin.usuarios.desactivar', $usuario->id) }}"
+												 class="btn btn-danger {{ $usuario->estatus == 'inactivo' ? 'disabled' : '' }} "
+												 title="Desactivar Usuario">
+	                          <span class="glyphicon glyphicon-off" aria-hidden="true" ></span>
+	                    </a>
+											{{--<a href="{{ route('admin.usuarios.destroy', $usuario->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar el usuario ?')" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>
-                         </a>
+												</a>--}}
                          <a href="{{ route('admin.usuarios.edit', $usuario->id) }}" class=" btn btn-warning">
                            <span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>
                          </a>

@@ -52,7 +52,7 @@ class ModelosController extends Controller
       $modelo = new Modelo($request->all());
       $modelo->save();
 
-      Flash::success("Se ha agregado el modelo ". $modelo->modelo. " exitosamente!");
+      flash("Se ha agregado el modelo ". $modelo->modelo. " exitosamente!", 'success');
 
       return redirect()->route('admin.modelos.index');
     }
@@ -98,7 +98,7 @@ class ModelosController extends Controller
       $modelo->fill($request->all());
       $modelo->save();
 
-      Flash::warning('El modelo : ' . $modelo->modelo . ' ha sido editado exitosamente');
+      flash('El modelo : ' . $modelo->modelo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.modelos.index');
     }
 

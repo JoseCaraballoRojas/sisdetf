@@ -52,7 +52,7 @@ class CaracteristicasController extends Controller
       $caracteristica = new Caracteristica($request->all());
       $caracteristica->save();
 
-      Flash::success("Se ha agregado la caracteristica ". $caracteristica->caracteristica. " exitosamente!");
+      flash("Se creo la caracteristica ". $caracteristica->caracteristica. " exitosamente!", 'success');
 
       return redirect()->route('admin.caracteristicas.index');
     }
@@ -87,7 +87,7 @@ class CaracteristicasController extends Controller
       $caracteristica->fill($request->all());
       $caracteristica->save();
 
-      Flash::warning('La caracteristica : ' . $caracteristica->caracteristica . ' ha sido editada exitosamente');
+      flash('La caracteristica : ' . $caracteristica->caracteristica . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.caracteristicas.index');
     }
 

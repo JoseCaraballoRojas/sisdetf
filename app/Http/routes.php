@@ -25,6 +25,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'UsuariosController@destroy',
         'as' => 'admin.usuarios.destroy'
         ]);
+        Route::get('usuario/{id}/activar', [
+        'uses' => 'UsuariosController@activar',
+        'as' => 'admin.usuarios.activar'
+        ]);
+        Route::get('usuario/{id}/desactivar', [
+        'uses' => 'UsuariosController@desactivar',
+        'as' => 'admin.usuarios.desactivar'
+        ]);
 
     });
 

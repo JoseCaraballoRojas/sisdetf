@@ -54,7 +54,7 @@ class EquiposController extends Controller
       $equipo = new Equipo($request->all());
       $equipo->save();
 
-      Flash::success("Se ha registrado el equipo ". $equipo->equipo. " exitosamente!");
+      flash("Se ha registrado el equipo ". $equipo->equipo. " exitosamente!", 'success');
 
       return redirect()->route('admin.equipos.index');
     }
@@ -102,7 +102,7 @@ class EquiposController extends Controller
       $equipo->fill($request->all());
       $equipo->save();
 
-      Flash::warning('El equipo : ' . $equipo->equipo . ' ha sido editado exitosamente');
+      flash('El equipo : ' . $equipo->equipo . ' ha sido editado exitosamente', 'warning');
       return redirect()->route('admin.equipos.index');
     }
 

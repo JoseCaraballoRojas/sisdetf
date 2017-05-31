@@ -53,7 +53,7 @@ class FallasController extends Controller
       $falla = new Falla($request->all());
       $falla->save();
 
-      Flash::success("Se ha agregado la falla ". $falla->falla. " exitosamente!");
+      flash("Se ha agregado la falla ". $falla->falla. " exitosamente!", 'success');
 
       return redirect()->route('admin.fallas.index');
     }
@@ -98,7 +98,7 @@ class FallasController extends Controller
       $falla->fill($request->all());
       $falla->save();
 
-      Flash::warning('La falla : ' . $falla->falla . ' ha sido editada exitosamente');
+      flash('La falla : ' . $falla->falla . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.fallas.index');
     }
 

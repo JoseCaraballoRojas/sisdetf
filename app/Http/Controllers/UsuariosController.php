@@ -45,7 +45,7 @@ class UsuariosController extends Controller
         $usuario->password = bcrypt($request->password);
         $usuario->save();
 
-        Flash::success("Se ha registrado el usuario ". $usuario->usuario. " exitosamente!");
+        flash("Se ha registrado el usuario ". $usuario->usuario. " exitosamente!", 'success');
 
         return redirect()->route('admin.usuarios.index');
     }
@@ -87,7 +87,7 @@ class UsuariosController extends Controller
         $usuario->fill($request->all());
         $usuario->save();
 
-        Flash::warning('El usuario: ' . $usuario->nombre . ' ha sido editado exitosamente');
+        flash('El usuario: ' . $usuario->nombre . ' ha sido editado exitosamente', 'warning');
         return redirect()->route('admin.usuarios.index');
     }
 
@@ -103,5 +103,29 @@ class UsuariosController extends Controller
         $usuario->delete();
         flash('El usuario ' . $usuario->usuario . 'se borro exitosamente', 'danger');
         return redirect()->route('admin.usuarios.index');
+    }
+
+    public function activar(Request $request, $id)
+    {
+      $usuario = Usuario::find($id);
+      $estatus = "activo";
+      $usuario->estatus = $estatus;
+      $usuario->fill($request->all());
+      $usuario->save();
+
+      flash('El usuario ' . $usuario->usuario . 'se activo exitosamente', 'success');
+      return redirect()->route('admin.usuarios.index');
+    }
+
+    public function desactivar(Request $request,$id)
+    {
+      $usuario = Usuario::find($id);
+      $estatus = "inactivo";
+      $usuario->estatus = $estatus;
+      $usuario->fill($request->all());
+      $usuario->save();
+
+      flash('El usuario ' . $usuario->usuario . 'se desactivo exitosamente', 'danger');
+      return redirect()->route('admin.usuarios.index');
     }
 }

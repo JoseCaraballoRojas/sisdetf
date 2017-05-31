@@ -52,7 +52,7 @@ class SolucionesController extends Controller
       $solucion = new Solucion($request->all());
       $solucion->save();
 
-      Flash::success("Se ha agregado la solucion ". $solucion->solucion. " exitosamente!");
+      flash("Se ha agregado la solucion ". $solucion->solucion. " exitosamente!", 'success');
 
       return redirect()->route('admin.soluciones.index');
     }
@@ -86,7 +86,7 @@ class SolucionesController extends Controller
       $solucion->fill($request->all());
       $solucion->save();
 
-      Flash::warning('La solucion : ' . $solucion->solucion . ' ha sido editada exitosamente');
+      flash('La solucion : ' . $solucion->solucion . ' ha sido editada exitosamente', 'warning');
       return redirect()->route('admin.soluciones.index');
     }
 
