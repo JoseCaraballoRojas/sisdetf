@@ -4,8 +4,10 @@
         @yield('contentheader_title', 'SISDETF')
         <small>@yield('contentheader_description')</small>
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('adminlte_lang::message.level') }}</a></li>
+  {{--  <ol class="breadcrumb">
+        <li><a href="{{ url('home') }}"> Inicio</a></li>
         <li class="active">{{ trans('adminlte_lang::message.here') }}</li>
-    </ol>
+    </ol>  --}}
+    @include('flash::message')
+    @include('admin.template.errores')
 </section>

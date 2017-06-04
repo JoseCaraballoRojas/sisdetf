@@ -63,6 +63,9 @@
                     <li><a href="#"><i class='fa fa-users'></i> Estadisticos</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="{{ route('admin.motor.create')}}"><i class='fa fa-wrench'></i> <span>Diagnostico</span></a>
+            </li>
             @if(Auth::user()->admin())
             <li class="treeview">
                 <a href="#"><i class='fa fa-users'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>

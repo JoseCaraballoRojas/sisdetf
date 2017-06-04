@@ -5,10 +5,18 @@
 @section('main-content')
 
 <div class="row">
-<div class="col-md-10 col-md-offset-1 ">
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      <a href="{{ route('admin.tipos.index')}}" class="btn btn-danger">
+        <i class="fa fa-reply" aria-hidden="true"></i> Regresar
+      </a>
+    </div>
+  </div>
+  <br>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="form-signin-heading text-center"><b>Agregar un tipo de fallas</b></h3>
+    <h3 class="form-signin-heading text-center"><b>Agregar un tipo de falla</b></h3>
   </div>
   <div class="panel-body">
     {!! Form::open(['route' => 'admin.tipos.store', 'method' => 'POST' ])  !!}

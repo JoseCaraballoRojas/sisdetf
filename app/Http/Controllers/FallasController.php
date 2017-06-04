@@ -54,7 +54,7 @@ class FallasController extends Controller
     {
       $falla = new Falla($request->all());
       $falla->save();
-
+      //dd($falla);
       //resgitar la actividad en el historial del sistema
       $historial = new Historial();
       $historial->accion = 'Agrego';

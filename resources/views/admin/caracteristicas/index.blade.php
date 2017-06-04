@@ -5,7 +5,9 @@
 @section('main-content')
 <div class="row">
   <div class="col-md-12 ">
-    <a href="{{ route('admin.caracteristicas.create')}}" class="btn btn-info">Agregar Caracteristica</a>
+    <a href="{{ route('admin.caracteristicas.create')}}" class="btn btn-info">
+      <i class="fa fa-plus" aria-hidden="true"></i> Agregar Caracteristica
+    </a>
     <table class="table table-striped ">
         <thead>
             <th>ID</th>

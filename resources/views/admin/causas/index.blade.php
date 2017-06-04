@@ -5,7 +5,9 @@
 @section('main-content')
 <div class="row">
   <div class="col-md-12 ">
-    <a href="{{ route('admin.causas.create')}}" class="btn btn-info">Agregar Causa</a>
+    <a href="{{ route('admin.causas.create')}}" class="btn btn-info">
+      <i class="fa fa-plus" aria-hidden="true"></i> Agregar Causa
+    </a>
     <table class="table table-striped ">
         <thead>
             <th>ID</th>

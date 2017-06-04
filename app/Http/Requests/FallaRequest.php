@@ -24,8 +24,8 @@ class FallaRequest extends Request
     public function rules()
     {
         return [
-            'falla'    => 'min:10|max:100|required',
-            'descripcion'    => 'min:10|max:200|required',
+            'falla'    => 'min:2|max:100|required',
+            'descripcion'    => 'min:5|max:200|required',
             'idTipoFK'  => 'required'
         ];
     }

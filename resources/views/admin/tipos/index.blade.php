@@ -5,7 +5,9 @@
 @section('main-content')
 <div class="row">
   <div class="col-md-12 ">
-    <a href="{{ route('admin.tipos.create')}}" class="btn btn-info">Agregar tipo</a>
+    <a href="{{ route('admin.tipos.create')}}" class="btn btn-info">
+      <i class="fa fa-plus" aria-hidden="true"></i> Agregar tipo
+    </a>
     <table class="table table-striped text-center">
         <thead>
             <th>ID</th>

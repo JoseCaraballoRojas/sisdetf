@@ -127,11 +127,11 @@
                                 <img src="{{asset('/img/logo-sisdetf.png')}}" class="img" alt="User Image" />
                                 <p>
                                     {{ Auth::user()->nombre }}
-                                    <small>{{ trans('adminlte_lang::message.login') }} {{ date('d')}} de {{ date('M')}} del {{ date('Y')}} </small>
+                                    <small>Inicio Sesión {{ date('d')}} de {{ date('M')}} del {{ date('Y')}} </small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
+                            {{--<li class="user-body">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.followers') }}</a>
                                 </div>
@@ -141,12 +141,12 @@
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.friends') }}</a>
                                 </div>
-                            </li>
+                            </li>--}}
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
+                                {{--<div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
-                                </div>
+                                </div>--}}
                                 <div class="pull-right">
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.signout') }}</a>
                                 </div>

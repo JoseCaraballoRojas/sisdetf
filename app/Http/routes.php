@@ -98,6 +98,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     'as' => 'admin.soluciones.destroy'
     ]);
 
+    //rutas de motor de inferencia...
+    Route::resource('motor', 'MotorController');
+
+
 
     //ruta para home
     Route::get('/home', 'HomeController@index');
