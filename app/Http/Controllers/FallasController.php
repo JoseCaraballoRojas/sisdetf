@@ -11,6 +11,9 @@ use App\Historial;
 use Auth;
 use Laracasts\Flash\Flash;
 use App\Tipo;
+use App\Caracteristica;
+use App\Causa;
+use App\Solucion;
 
 class FallasController extends Controller
 {
@@ -52,9 +55,84 @@ class FallasController extends Controller
      */
     public function store(FallaRequest $request)
     {
-      $falla = new Falla($request->all());
+      //dd($request->all());
+      $falla = new Falla();
+      $falla->falla = $request->falla;
+      $falla->descripcion = $request->descripcion;
+      $falla->idTipoFK = $request->idTipoFK;
       $falla->save();
-      //dd($falla);
+
+      $caracteristica1 = new Caracteristica();
+      $caracteristica1->caracteristica = $request->caracteristica1;
+      $caracteristica1->idFallaFK = $falla->id;
+      $caracteristica1->save();
+
+      if ($request->caracteristica2 != '') {
+        $caracteristica2 = new Caracteristica();
+        $caracteristica2->caracteristica = $request->caracteristica2;
+        $caracteristica2->idFallaFK = $falla->id;
+        $caracteristica2->save();
+
+      }
+
+      if ($request->caracteristica3 != '') {
+        $caracteristica3 = new Caracteristica();
+        $caracteristica3->caracteristica = $request->caracteristica3;
+        $caracteristica3->idFallaFK = $falla->id;
+        $caracteristica3->save();
+
+      }
+
+      $causa1 = new Causa();
+      $causa1->causa = $request->causa1;
+      $causa1->descripcion = $request->descripcionCausa1;
+      $causa1->idFallaFK = $falla->id;
+      $causa1->save();
+
+      if ($request->causa2 != '') {
+        $causa2 = new Causa();
+        $causa2->causa = $request->causa2;
+        $causa2->descripcion = $request->descripcionCausa2;
+        $causa2->idFallaFK = $falla->id;
+        $causa2->save();
+
+      }
+
+      if ($request->causa3 != '') {
+        $causa3 = new Causa();
+        $causa3->causa = $request->causa3;
+        $causa3->descripcion = $request->descripcionCausa3;
+        $causa3->idFallaFK = $falla->id;
+        $causa3->save();
+
+      }
+
+      $sugerencia1 = new Solucion();
+      $sugerencia1->solucion = $request->sugerencia1;
+      $sugerencia1->descripcion = $request->descripcionSugerencia1;
+      $sugerencia1->idFallaFK = $falla->id;
+      $sugerencia1->save();
+
+
+      if ($request->sugerencia2 != '') {
+        $sugerencia2 = new Solucion();
+        $sugerencia2->solucion = $request->sugerencia2;
+        $sugerencia2->descripcion = $request->descripcionSugerencia2;
+        $sugerencia2->idFallaFK = $falla->id;
+        $sugerencia2->save();
+
+      }
+
+      if ($request->sugerencia3 != '') {
+        $sugerencia3 = new Solucion();
+        $sugerencia3->solucion = $request->sugerencia3;
+        $sugerencia3->descripcion = $request->descripcionSugerencia3;
+        $sugerencia3->idFallaFK = $falla->id;
+        $sugerencia3->save();
+        
+      }
+
+
       //resgitar la actividad en el historial del sistema
       $historial = new Historial();
       $historial->accion = 'Agrego';

@@ -8,6 +8,6 @@
         <li><a href="{{ url('home') }}"> Inicio</a></li>
         <li class="active">{{ trans('adminlte_lang::message.here') }}</li>
     </ol>  --}}
-    @include('flash::message')
+    
     @include('admin.template.errores')
 </section>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class FallaRequest extends Request
+class TipoUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class FallaRequest extends Request
     public function rules()
     {
         return [
-            'falla'    => 'min:2|max:100|required|unique:fallas',
-            'descripcion'    => 'min:5|max:200|required',
-            'idTipoFK'  => 'required'
+            'tipo' => 'min:4|max:60|required',
+            'descripcion' => 'min:10|max:200|required'
         ];
     }
 }

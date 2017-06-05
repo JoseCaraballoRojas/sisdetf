@@ -31,20 +31,21 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <!--<li class="header">{{ trans('adminlte_lang::message.header') }}</li>-->
+            {{--<li class="header">{{ trans('adminlte_lang::message.header') }}</li>--}}
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <!--<li><a href="{{ route('admin.usuarios.index')}}"> <span class="fa fa-users" aria-hidden="true"> Usuarios</a></li>-->
+            {{--<li><a href="{{ route('admin.usuarios.index')}}"> <span class="fa fa-users" aria-hidden="true"> Usuarios</a></li>--}}
 
+            <li><a href="{{ route('admin.marcas.index')}}"><i class='fa fa-microchip'></i>Marcas</a></li>
+            <li><a href="{{ route('admin.modelos.index')}}"><i class='fa glyphicon-tasks'></i>Modelos</a></li>
+            <li><a href="{{ route('admin.equipos.index')}}"><i class='fa fa-desktop'></i>Equipos</a></li>
 
-            <li class="treeview">
+            {{--<li class="treeview">
                 <a href="#"><i class='fa fa-desktop'></i> <span>Equipos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('admin.marcas.index')}}"><i class='fa fa-microchip'></i>Marcas</a></li>
-                    <li><a href="{{ route('admin.modelos.index')}}"><i class='fa glyphicon-tasks'></i>Modelos</a></li>
-                    <li><a href="{{ route('admin.equipos.index')}}"><i class='fa fa-desktop'></i>Equipos</a></li>
                 </ul>
-            </li>
+            </li>--}}
+
             <li class="treeview">
                 <a href="#"><i class='fa fa-exclamation-triangle'></i> <span>Fallas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -56,19 +57,19 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-users'></i> <span>Reportes</span> <i class="fa fa-chevron-left pull-right"></i></a>
+                <a href="{{ route('admin.motor.create')}}"><i class='fa fa-wrench'></i> <span>Diagnostico</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class='fa fa-line-chart'></i> <span>Reportes</span> <i class="fa fa-chevron-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#"><i class='fa fa-file-pdf-o'></i> Pdf</a></li>
                     <li><a href="#"><i class='fa fa-pie-chart'></i> Graficos</a></li>
-                    <li><a href="#"><i class='fa fa-users'></i> Estadisticos</a></li>
+                    <li><a href="#"><i class='fa fa-line-chart'></i> Estadisticos</a></li>
                 </ul>
-            </li>
-            <li class="treeview">
-                <a href="{{ route('admin.motor.create')}}"><i class='fa fa-wrench'></i> <span>Diagnostico</span></a>
             </li>
             @if(Auth::user()->admin())
             <li class="treeview">
-                <a href="#"><i class='fa fa-users'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-shield'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.usuarios.index')}}"><i class='fa fa-users'></i> Usuarios</a></li>
                     <li><a href="#"><i class='fa fa-database'></i> Respaldo</a></li>

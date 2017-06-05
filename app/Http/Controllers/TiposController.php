@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\TipoRequest;
+use App\Http\Requests\TipoUpdateRequest;
+
 use App\Tipo;
 use App\Historial;
 use Auth;
@@ -51,7 +53,7 @@ class TiposController extends Controller
       $historial->idUsuarioFK = Auth::user()->id;
       $historial->save();
 
-      flash('Se agrego el tipo ' . $tipo->tipo . 'exitosamente!', 'danger');
+      flash('Se agrego el tipo ' . $tipo->tipo . 'exitosamente!', 'success');
       return redirect()->route('admin.tipos.index');
     }
 
@@ -85,7 +87,7 @@ class TiposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TipoRequest $request, $id)
+    public function update(TipoUpdateRequest $request, $id)
     {
       $tipo = Tipo::find($id);
       $tipo->fill($request->all());
