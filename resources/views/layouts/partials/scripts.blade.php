@@ -11,3 +11,5 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
+<!-- script para motor-->
+<script src="{{ asset('/js/motorscript.js') }}" type="text/javascript"></script>

@@ -37,6 +37,12 @@ class MotorController extends Controller
     public function store(Request $request)
     {
         dd($request->all());
+        if ($request->tipo == 'escritorio') {
+          # code...
+        }
+        elseif ($request->tipo == 'portatil') {
+          # code...
+        }
     }
 
     /**

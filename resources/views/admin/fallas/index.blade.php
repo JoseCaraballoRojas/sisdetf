@@ -17,6 +17,7 @@
             <th>Acción</th>
         </thead>
         <tbody>
+          @if (count($fallas))
             @foreach($fallas as $falla)
                 <tr>
                     <td>{{ $falla->id }}</td>
@@ -36,6 +37,11 @@
                     </td>
                 </tr>
             @endforeach
+          @else
+              <tr>
+                  <td colspan="5"><em>No hay fallas registradas en la base de datos</em></td>
+              </tr>
+          @endif
         </tbody>
     </table>
     <div class="text-center">
