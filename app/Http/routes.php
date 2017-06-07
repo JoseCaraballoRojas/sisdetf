@@ -101,8 +101,38 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     //rutas de motor de inferencia...
     Route::resource('motor', 'MotorController');
 
+    Route::post('motor/fallavideo', [
+    'uses' => 'MotorController@fallavideo',
+    'as' => 'admin.motor.fallavideo'
+    ]);
 
+    Route::post('motor/fallaArranque', [
+    'uses' => 'MotorController@fallaArranque',
+    'as' => 'admin.motor.fallaArranque'
+    ]);
 
+    Route::post('motor/fallaSO', [
+    'uses' => 'MotorController@fallaSO',
+    'as' => 'admin.motor.fallaSO'
+    ]);
+
+    Route::post('motor/guardar', [
+    'uses' => 'MotorController@guardar',
+    'as' => 'admin.motor.guardar'
+    ]);
+
+    Route::post('motor/siguienteFalla', [
+    'uses' => 'MotorController@siguienteFalla',
+    'as' => 'admin.motor.siguienteFalla'
+    ]);
+
+//rutas de diagnosticos...
+    Route::resource('diagnosticos', 'DiagnosticosController');
+    
+    //ruta para diagnosticos solucionados
+    Route::get('diagnosticos/solucionadas', 'DiagnosticosController@indexSolucionadas');
+
+   
     //ruta para home
     Route::get('/home', 'HomeController@index');
 });

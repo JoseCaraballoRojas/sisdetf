@@ -11,7 +11,7 @@ class Falla extends Model
   protected $fillable = [
       'falla', 'descripcion', 'idTipoFK', 'caracteristica1', 'caracteristica2',
       'caracteristica3', 'causa1', 'causa2', 'causa3', 'sugerencia1', 'sugerencia2',
-      'sugerencia3'
+      'sugerencia3', 'solucion'
   ];
 
   public function tipo()
@@ -25,7 +25,12 @@ class Falla extends Model
   }
   public function soluciones()
   {
-      return $this->belongsTo('App\Solucion', 'idSolucionFK');
+      return $this->hasMany('App\Solucion', 'idFallaFK');
   }
+
+   public function caracteristicas()
+    {
+        return $this->hasMany('App\Caracteristica', 'idFallaFK');
+    }
 
 }

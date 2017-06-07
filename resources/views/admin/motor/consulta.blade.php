@@ -15,7 +15,7 @@
     <div class="col-md-12 primer_form">
       <h3 class="form-signin-heading text-center"><b>Seleccione el Tipo de Equipo: </b></h3>
     </div>
-
+      
       <div class="col-md-5 col-md-offset-1 primer_form">
         <div class="image">
             <img src="{{asset('/img/escritorio.jpg')}}" class="img" alt="escritorio Image" />
@@ -54,8 +54,9 @@
     </div>
     <div class="panel-footer">
         <div class="form-group">
+            {!! Form::button('Atras', ['class' => 'btn btn-danger', 'id' => 'btn_atras']) !!}
             {!! Form::submit('Diagnosticar', ['class' => 'btn btn-success', 'id' => 'btn_submit']) !!}
-            {!! Form::button('Diagnosticar', ['class' => 'btn btn-primary', 'id' => 'btn_primero']) !!}
+            {!! Form::button('Siguiente', ['class' => 'btn btn-primary', 'id' => 'btn_primero']) !!}
         </div>
     {!! Form::close() !!}
   </div>

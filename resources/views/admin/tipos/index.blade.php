@@ -21,12 +21,15 @@
                     <td>{{ $tipo->id }}</td>
                     <td>{{ $tipo->tipo }}</td>
                     <td>{{ $tipo->descripcion }}</td>
-                    <td> <a href="{{ route('admin.tipos.destroy', $tipo->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar el tipo ?')" class="btn btn-danger">
+                    <td>
+                        @if($tipo->id > 5) 
+                        <a href="{{ route('admin.tipos.destroy', $tipo->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar el tipo ?')" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>
                          </a>
                          <a href="{{ route('admin.tipos.edit', $tipo->id) }}" class=" btn btn-warning">
                            <span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>
                          </a>
+                         @endif
                     </td>
                 </tr>
             @endforeach

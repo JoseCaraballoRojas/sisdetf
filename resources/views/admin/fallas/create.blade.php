@@ -26,10 +26,21 @@
             {!! Form::text('falla',null, ['class' => 'form-control',
             'placeholder' => 'Falla', 'required']) !!}
         </div>
+         <div class="form-group">
+            {!! Form::label('tipoEquipo', 'Tipo de equipo') !!}
+            {!! Form::select('tipoEquipo', ['escritorio' => 'escritorio', 'portatil' => 'portatil'],
+             null, ['class' => 'form-control',
+                'placeholder' => 'selecione una opción...', 'required'  ]) !!}
+        </div>
         <div class="form-group">
             {!! Form::label('descripcion', 'Descripción') !!}
             {!! Form::text('descripcion',null, ['class' => 'form-control',
             'placeholder' => 'Descripción', 'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('pregunta', 'Pregunta') !!}
+            {!! Form::text('pregunta',null, ['class' => 'form-control',
+            'placeholder' => 'Pregunta', 'required']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('idTipoFK', 'Tipo') !!}

@@ -59,6 +59,8 @@ class FallasController extends Controller
       $falla = new Falla();
       $falla->falla = $request->falla;
       $falla->descripcion = $request->descripcion;
+      $falla->tipo_Equipo = $request->tipoEquipo;
+      $falla->pregunta = $request->pregunta;
       $falla->idTipoFK = $request->idTipoFK;
       $falla->save();
 

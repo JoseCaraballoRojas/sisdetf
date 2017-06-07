@@ -18,14 +18,16 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
+
+                <!-- NOTIFICACIONES FALLAS SOLUCIONADAS-->
+                 @if(Auth::user()->admin())
                 <li class="dropdown messages-menu">
                     <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="label label-success">4</span>
+                    <a href="{{-- route('admin.diagnosticos.indexSolucionadas') --}}"  title="Fallas Solucionadas">
+                        <i class="fa fa-check-square-o"></i>
+                        <span class="label label-success">10</span>
                     </a>
-                    <ul class="dropdown-menu">
+                    {{--<ul class="dropdown-menu">
                         <li class="header">{{ trans('adminlte_lang::message.tabmessages') }}i</li>
                         <li>
                             <!-- inner menu: contains the messages -->
@@ -48,17 +50,18 @@
                             </ul><!-- /.menu -->
                         </li>
                         <li class="footer"><a href="#">c</a></li>
-                    </ul>
+                    </ul>--}}
                 </li><!-- /.messages-menu -->
 
                 <!-- Notifications Menu -->
+                <!-- NOTIFICACIONES FALLAS  NO SOLUCIONADAS-->
                 <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Fallas No Solucionadas">
+                        <i class="fa fa-window-close"></i>
+                        <span class="label label-danger">10</span>
                     </a>
-                    <ul class="dropdown-menu">
+                   {{--<ul class="dropdown-menu">
                         <li class="header">{{ trans('adminlte_lang::message.notifications') }}</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
@@ -71,16 +74,17 @@
                             </ul>
                         </li>
                         <li class="footer"><a href="#">{{ trans('adminlte_lang::message.viewall') }}</a></li>
-                    </ul>
+                    </ul>--}}
                 </li>
+                @endif
                 <!-- Tasks Menu -->
                 <li class="dropdown tasks-menu">
                     <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-danger">9</span>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Mensajes">
+                        <i class="fa fa-comments"></i>
+                        <span class="label label-default">1</span>
                     </a>
-                    <ul class="dropdown-menu">
+                    {{--<ul class="dropdown-menu">
                         <li class="header">{{ trans('adminlte_lang::message.tasks') }}</li>
                         <li>
                             <!-- Inner menu: contains the tasks -->
@@ -106,8 +110,9 @@
                         <li class="footer">
                             <a href="#">{{ trans('adminlte_lang::message.alltasks') }}</a>
                         </li>
-                    </ul>
+                    </ul>--}}
                 </li>
+
                 @if (Auth::guest())
                     <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
                     <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>

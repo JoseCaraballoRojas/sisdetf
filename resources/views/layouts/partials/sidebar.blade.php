@@ -35,7 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             {{--<li><a href="{{ route('admin.usuarios.index')}}"> <span class="fa fa-users" aria-hidden="true"> Usuarios</a></li>--}}
-
+            @if(Auth::user()->admin())
             <li><a href="{{ route('admin.marcas.index')}}"><i class='fa fa-microchip'></i>Marcas</a></li>
             <li><a href="{{ route('admin.modelos.index')}}"><i class='fa glyphicon-tasks'></i>Modelos</a></li>
             <li><a href="{{ route('admin.equipos.index')}}"><i class='fa fa-desktop'></i>Equipos</a></li>
@@ -45,7 +45,6 @@
                 <ul class="treeview-menu">
                 </ul>
             </li>--}}
-
             <li class="treeview">
                 <a href="#"><i class='fa fa-exclamation-triangle'></i> <span>Fallas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -56,8 +55,13 @@
                     <li><a href="{{ route('admin.fallas.index')}}"> <span class="fa fa-exclamation-triangle" aria-hidden="true"> Fallas</a></li>
                 </ul>
             </li>
+            @endif
             <li class="treeview">
-                <a href="{{ route('admin.motor.create')}}"><i class='fa fa-wrench'></i> <span>Diagnostico</span></a>
+                <a href="{{ route('admin.motor.create')}}"><i class='fa fa-wrench'></i> <span>Diagnosticar</span></a>
+            </li>
+            @if(Auth::user()->admin())
+            <li class="treeview">
+                <a href="{{ route('admin.diagnosticos.index')}}"><i class='fa fa-magic'></i> <span>Diagnosticos</span></a>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Reportes</span> <i class="fa fa-chevron-left pull-right"></i></a>
@@ -67,7 +71,7 @@
                     <li><a href="#"><i class='fa fa-line-chart'></i> Estadisticos</a></li>
                 </ul>
             </li>
-            @if(Auth::user()->admin())
+            
             <li class="treeview">
                 <a href="#"><i class='fa fa-shield'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

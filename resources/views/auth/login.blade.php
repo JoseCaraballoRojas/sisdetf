@@ -27,7 +27,7 @@
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="{{ trans('adminlte_lang::message.username') }}" name="usuario"/>
+            <input type="text" class="form-control" placeholder="Nombre de Usuario" name="usuario"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -41,9 +41,6 @@
         </div>
     </form>
 
-
-    <!--<a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
-    <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a> -->
 
 </div><!-- /.login-box-body -->
 

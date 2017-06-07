@@ -26,6 +26,12 @@
             'placeholder' => 'Falla', 'required']) !!}
         </div>
         <div class="form-group">
+            {!! Form::label('tipoEquipo', 'Tipo de equipo') !!}
+            {!! Form::select('tipoEquipo', ['escritorio' => 'escritorio', 'portatil' => 'portatil'],
+             null, ['class' => 'form-control',
+                'placeholder' => 'selecione una opción...', 'required'  ]) !!}
+        </div>
+        <div class="form-group">
             {!! Form::label('descripcion', 'Descripción') !!}
             {!! Form::text('descripcion',$falla->descripcion, ['class' => 'form-control',
             'placeholder' => 'Descripción', 'required']) !!}
