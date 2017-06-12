@@ -7,27 +7,27 @@
   <div class="col-md-12 ">
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
+            
             <th>Falla</th>
             <th>Tipo de Equipo</th>
             <th>Estatus</th>
             <th>Usuario</th>
             <th>Fecha</th>
-            <th>Hora</th>
+            
         </thead>
         <tbody>
           @if (count($diagnosticos))
             @foreach($diagnosticos as $diagnostico)
                 <tr>
-                    <td>{{ $diagnostico->id }}</td>
+                    
                     <td>{{ $diagnostico->falla->falla }}</td>
                     <td>{{ $diagnostico->tipo }}</td>
                     <td class="{{ $diagnostico->estatus == 'solucionada' ? 'text-success' : 'text-danger' }} ">
                       {{ $diagnostico->estatus }}
                     </td>
                     <td>{{ $diagnostico->usuario }}</td>
-                    <td>{{ $diagnostico->created_at->format('Y-m-d') }}</td>
-                    <td>{{ $diagnostico->created_at->format('H:m:s') }}</td>
+                    <td>{{ $diagnostico->created_at->format('Y-m-d') }}
+                        {{ $diagnostico->created_at->format('H:m:s') }}</td>
                     
                     
                 </tr>

@@ -10,7 +10,7 @@
     </a>
     <table class="table table-striped text-center">
         <thead>
-            <th>ID</th>
+           
             <th>Tipo</th>
             <th>Descripción</th>
             <th>Acción</th>
@@ -18,7 +18,7 @@
         <tbody>
             @foreach($tipos as $tipo)
                 <tr>
-                    <td>{{ $tipo->id }}</td>
+                    
                     <td>{{ $tipo->tipo }}</td>
                     <td>{{ $tipo->descripcion }}</td>
                     <td>
