@@ -101,19 +101,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     //rutas de motor de inferencia...
     Route::resource('motor', 'MotorController');
 
+    //falla de video escritorio
     Route::post('motor/fallavideo', [
     'uses' => 'MotorController@fallavideo',
     'as' => 'admin.motor.fallavideo'
     ]);
 
+    //falla de video portatil
+    Route::post('motor/fallavideoPortatil', [
+    'uses' => 'MotorController@fallavideoPortatil',
+    'as' => 'admin.motor.fallavideoPortatil'
+    ]);
+
+    //falla arranque escritorio
     Route::post('motor/fallaArranque', [
     'uses' => 'MotorController@fallaArranque',
     'as' => 'admin.motor.fallaArranque'
     ]);
 
+    //falla arranque portatil
+    Route::post('motor/fallaArranquePortatil', [
+    'uses' => 'MotorController@fallaArranquePortatil',
+    'as' => 'admin.motor.fallaArranquePortatil'
+    ]);
+
+    //falla sistema operativo escritorio
     Route::post('motor/fallaSO', [
     'uses' => 'MotorController@fallaSO',
     'as' => 'admin.motor.fallaSO'
+    ]);
+
+    //falla sistema operativo portatil
+    Route::post('motor/fallaSOPortatil', [
+    'uses' => 'MotorController@fallaSOPortatil',
+    'as' => 'admin.motor.fallaSOPortatil'
     ]);
 
     Route::post('motor/guardar', [

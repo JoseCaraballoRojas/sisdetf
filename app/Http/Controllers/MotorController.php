@@ -54,9 +54,11 @@ class MotorController extends Controller
                 $id = $val->id;
             }
             
-            $fallas = Falla::where('idTipoFK', '=', $id )->paginate(5);
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
-            $fallas2 = Falla::where('idTipoFK', '=', $id )->paginate(1);
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(1);
             $fallas2->each(function ($fallas2){
                 $fallas2->caracteristicas;
                 $fallas2->soluciones;
@@ -74,7 +76,35 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-          # code...
+          
+          if ($request->enciende == 'no') {
+            
+            $tipo = Tipo::where('tipo', '=', 'falla electrica' )->get();
+            $id = 0;
+            
+            foreach ($tipo as $val) {
+                $id = $val->id;
+            }
+            
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
+
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(1);
+            $fallas2->each(function ($fallas2){
+                $fallas2->caracteristicas;
+                $fallas2->soluciones;
+            });
+
+              return view('admin.motor.diagnoticarFallaElectrica')
+                  ->with('fallas', $fallas)
+                  ->with('fallas2', $fallas2);
+          }
+          else{
+
+            return view('admin.motor.consultaVideoPortatil');
+          }
+
         }
             
         
@@ -97,9 +127,11 @@ class MotorController extends Controller
                 $id = $val->id;
             }
             
-            $fallas = Falla::where('idTipoFK', '=', $id )->paginate(5);
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
-            $fallas2 = Falla::where('idTipoFK', '=', $id )->paginate(1);
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(1);
             $fallas2->each(function ($fallas2){
                 $fallas2->caracteristicas;
                 $fallas2->soluciones;
@@ -117,7 +149,35 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-            # code...
+           
+             if ($request->video == 'no') {
+
+            $tipo = Tipo::where('tipo', '=', 'falla de video' )->get();
+            $id = 0;
+            
+            foreach ($tipo as $val) {
+                $id = $val->id;
+            }
+            
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
+
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(1);
+            $fallas2->each(function ($fallas2){
+                $fallas2->caracteristicas;
+                $fallas2->soluciones;
+            });
+
+              return view('admin.motor.diagnosticarFallaVideo')
+                  ->with('fallas', $fallas)
+                  ->with('fallas2', $fallas2);
+          }
+          else{
+
+            return view('admin.motor.consultaArranquePortatil');
+          }
+
         }
         
     }
@@ -138,9 +198,11 @@ class MotorController extends Controller
                 $id = $val->id;
             }
             
-            $fallas = Falla::where('idTipoFK', '=', $id )->paginate(5);
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
-            $fallas2 = Falla::where('idTipoFK', '=', $id )->paginate(1);
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(1);
             $fallas2->each(function ($fallas2){
                 $fallas2->caracteristicas;
                 $fallas2->soluciones;
@@ -159,7 +221,37 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-            # code...
+            
+            if ($request->arranque == 'no') {
+
+            $tipo = Tipo::where('tipo', '=', 'falla de arranque' )->get();
+            $id = 0;
+            
+            foreach ($tipo as $val) {
+                $id = $val->id;
+            }
+            
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
+
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(1);
+            $fallas2->each(function ($fallas2){
+                $fallas2->caracteristicas;
+                $fallas2->soluciones;
+            });
+
+              return view('admin.motor.diagnosticarFallaArranquePortatil')
+                  ->with('fallas', $fallas)
+                  ->with('fallas2', $fallas2);
+
+          }
+
+          else{
+
+            return view('admin.motor.consultaSO');
+          }
+
         }
         
     }
@@ -182,6 +274,7 @@ class MotorController extends Controller
 
                 $fallas2 = Falla::where('idTipoFK', '=', $id )
                                 ->where('falla', '=', 'no inicia sistema operativo' )
+                                ->where('tipo_Equipo', '=', 'escritorio')
                                 ->first();
                 
                 $fallas2->each(function ($fallas2){
@@ -204,9 +297,11 @@ class MotorController extends Controller
                 $id = $val->id;
             }
             
-            $fallas = Falla::where('idTipoFK', '=', $id )->paginate(5);
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
-            $fallas2 = Falla::where('idTipoFK', '=', $id )->paginate(1);
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'escritorio')->paginate(1);
             $fallas2->each(function ($fallas2){
                 $fallas2->caracteristicas;
                 $fallas2->soluciones;
@@ -219,7 +314,56 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-            # code...
+            
+            if ($request->so == 'no') {
+
+                $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
+                $id = 0;
+                
+                foreach ($tipo as $val) {
+                    $id = $val->id;
+                }
+
+                $fallas2 = Falla::where('idTipoFK', '=', $id )
+                                ->where('falla', '=', 'no inicia sistema operativo' )
+                                ->where('tipo_Equipo', '=', 'portatil')
+                                ->first();
+                
+                $fallas2->each(function ($fallas2){
+                    $fallas2->caracteristicas;
+                    $fallas2->soluciones;
+                });
+                //dd($fallas2->pregunta);
+                  return view('admin.motor.diagnosticarNoSystem')
+                        ->with('fallas2', $fallas2);
+
+              //return view('admin.motor.diagnosticarNoSystem')
+          }
+
+          else{
+
+            $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
+            $id = 0;
+            
+            foreach ($tipo as $val) {
+                $id = $val->id;
+            }
+            
+            $fallas = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
+
+            $fallas2 = Falla::where('idTipoFK', '=', $id )
+                    ->where('tipo_Equipo', '=', 'portatil')->paginate(1);
+            $fallas2->each(function ($fallas2){
+                $fallas2->caracteristicas;
+                $fallas2->soluciones;
+            });
+
+              return view('admin.motor.diagnosticarFallaSOPortatil')
+                  ->with('fallas', $fallas)
+                  ->with('fallas2', $fallas2);
+          }
+
         }
         
     }
