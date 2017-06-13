@@ -425,6 +425,31 @@ class MotorController extends Controller
         //
     }
 
+    public function siguienteFalla(Request $request)
+    {
+        //dd($request->all());
+      $url = $request->url;
+      $fallas = Falla::where('idTipoFK', '=', $request->id )
+                  ->where('tipo_Equipo', '=', $request->tipoEquipo )->paginate(5);
+
+      $fallas2 = Falla::where('id', '>', $request->id)
+                    ->where('idTipoFK', '=', $request->tipoFalla)
+                    ->where('tipo_Equipo', '=', $request->tipoEquipo)
+                    ->paginate(1);
+      if($fallas2->count() > 0){
+        $fallas2->each(function ($fallas2){
+                    $fallas2->caracteristicas;
+                    $fallas2->soluciones;
+                });
+
+        return view($url)
+            ->with('fallas', $fallas)
+            ->with('fallas2', $fallas2);
+      }
+      else{
+          return view('admin.motor.finDeFallas');
+      }
+    }
 
     /**
      * Remove the specified resource from storage.

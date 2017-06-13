@@ -12,16 +12,18 @@
       </div>
       <div class="panel-body">
         {!! Form::open(['route' => 'admin.motor.store', 'method' => 'POST' ])  !!}
-          {{ Form::hidden('tipo', 'escritorio') }}
-
+          {{ Form::hidden('tipo', 'escritorio', ['id' => 'tipoEquipo']) }}
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" id="_token">
+          
           <div class="col-md-9">
             <div class="row">    
               <div class="col-md-12">
                 @foreach($fallas2 as $falla)
-                {{ Form::hidden('id', $falla->id) }}
+                {{ Form::hidden('id', $falla->id, ['id' => 'id_falla']) }}
+                {{ Form::hidden('tipoFalla', $falla->idTipoFK, ['id' => 'tipoFalla']) }}
                 <div class="col-md-12">
                   <div class="form-group text-center h4">
-                    {!! Form::label('pregunta',  $falla->pregunta) !!}
+                    {!! Form::label('pregunta',  $falla->pregunta, ['id' =>  'pregunta']) !!}
                   </div>
                 </div>
                   <div class="caracteristica">
@@ -168,7 +170,13 @@
     </div>
   </div>
   </div>
-
+{!! Form::open(['route' => 'admin.motor.siguienteFalla', 'method' => 'POST' ])  !!}
+    {{ Form::hidden('id', $falla->id, ['id' => 'id_Falla']) }}
+    {{ Form::hidden('tipoFalla', $falla->idTipoFK, ['id' => 'tipo_Falla']) }}
+    {{ Form::hidden('tipoEquipo', 'escritorio', ['id' => 'tipo_Equipo']) }}
+    {{ Form::hidden('url', 'admin.motor.diagnoticarFallaElectrica') }}
+    {!! Form::submit('siguiente', ['id' => 'btnSiguienteFalla']) !!}
+{!! Form::close() !!}
  
 </div>
 

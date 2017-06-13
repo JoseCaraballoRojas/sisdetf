@@ -28,8 +28,6 @@
                     <td>{{ $diagnostico->usuario }}</td>
                     <td>{{ $diagnostico->created_at->format('Y-m-d') }}</td>
                     <td>{{ $diagnostico->created_at->format('H:m:s') }}</td>
-                    
-                    
                 </tr>
             @endforeach
           @else

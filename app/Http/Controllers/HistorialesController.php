@@ -13,9 +13,9 @@ class HistorialesController extends Controller
   * Funcion para listar el historial de movimientos de los usuarios
   *
   **/
-  public function index()
+  public function index(Request $request)
   {
-    $historiales = Historial::orderBy('id','DESC')->paginate(10);
+    $historiales = Historial::Buscar($request->texto)->orderBy('id','DESC')->paginate(10);
     return view('admin.historiales.index')->with('historiales', $historiales);
   }
 

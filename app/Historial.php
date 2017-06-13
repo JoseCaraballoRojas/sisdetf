@@ -17,4 +17,11 @@ class Historial extends Model
       return $this->belongsTo('App\Usuario', 'idUsuarioFK');
   }
 
+  public function scopeBuscar($query, $texto)
+    {
+    	if ($texto != "") {
+    		return $query->where('accion', 'LIKE', "%$texto%");	
+    	}
+    	
+    }
 }

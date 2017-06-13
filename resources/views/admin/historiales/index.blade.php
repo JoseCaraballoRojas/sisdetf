@@ -6,6 +6,17 @@
 
 @section('main-content')
 <div class="row">
+<!--BUSCADOR -->
+    {!! Form::open(['route' => 'admin.historiales.index', 'method' => 'GET', 
+        'class' => 'navbar-form pull-right']) !!}
+        <div class="input-group">
+          {!! Form::text('texto', null, ['class' => 'form-control', 'placeholder' => 'Buscar',
+                        'aria-describedby' => 'buscar']) !!}
+          <span class="input-group-addon" id="buscar"> 
+              <span class="glyphicon glyphicon-search" aria-hidden="true"> </span> </span>
+        </div>
+    {!! Form::close() !!}
+  <!--FIN DEL BUSCADOR-->
   <div class="col-md-12 ">
 
     <table class="table table-striped ">

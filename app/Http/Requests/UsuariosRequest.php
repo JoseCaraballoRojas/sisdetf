@@ -24,11 +24,11 @@ class UsuariosRequest extends Request
     public function rules()
     {
         return [
-            'nombre'    => 'min:4|max:60|required',
-            'apellido'  => 'min:4|max:60|required',
+            'nombre'    => 'min:4|max:60|required|alpha',
+            'apellido'  => 'min:4|max:60|required|alpha',
             'usuario'   => 'min:4|max:60|required|unique:usuarios',
-            'cedula'    => 'min:7|max:8|required',
-            'password'  => 'min:4|max:60|required'
+            'cedula'    => 'required|digits_between: 7 , 8|integer',
+            'password'  => 'min:8|max:60|required|alpha_dash'
         ];
     }
 }

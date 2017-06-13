@@ -14,9 +14,10 @@ class DiagnosticosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $diagnosticos = Diagnostico::orderBy('id', 'DESC')->paginate(7);
+        
+        $diagnosticos = Diagnostico::Buscar($request->texto)->orderBy('id', 'DESC')->paginate(7);
         $diagnosticos->each(function ($diagnosticos){
           $diagnosticos->falla;
       });

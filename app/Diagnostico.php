@@ -16,4 +16,14 @@ class Diagnostico extends Model
     {
         return $this->belongsTo('App\Falla', 'idFallaFK');
     }
+
+    public function scopeBuscar($query, $texto)
+    {
+    	if ($texto !="") {
+    		return $query->where('usuario', 'LIKE', "%$texto%")
+    			->orWhere('estatus', 'LIKE', "%$texto%")
+    			->orWhere('tipo', 'LIKE', "%$texto%");	
+    	}
+    	
+    }
 }
