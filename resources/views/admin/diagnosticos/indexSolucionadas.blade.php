@@ -7,7 +7,6 @@
   <div class="col-md-12 ">
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
             <th>Falla</th>
             <th>Tipo de Equipo</th>
             <th>Estatus</th>
@@ -18,8 +17,7 @@
         <tbody>
           @if (count($diagnosticos))
             @foreach($diagnosticos as $diagnostico)
-                <tr>
-                    <td>{{ $diagnostico->id }}</td>
+                <tr>  
                     <td>{{ $diagnostico->falla->falla }}</td>
                     <td>{{ $diagnostico->tipo }}</td>
                     <td class="text-success">

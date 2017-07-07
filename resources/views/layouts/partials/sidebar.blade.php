@@ -61,7 +61,10 @@
             </li>
             @if(Auth::user()->admin())
             <li class="treeview">
-                <a href="{{ route('admin.diagnosticos.index')}}"><i class='fa fa-magic'></i> <span>Diagnosticos</span></a>
+                <a href="{{ route('admin.diagnosticos.index')}}"><i class='fa fa-magic'></i> <span>Historial de Diagnósticos</span></a>
+            </li>
+            <li class="treeview">
+                <a href="{{ route('admin.diagnosticos.indexSolucionadas')}}"><i class='fa fa-check-square-o'></i> <span>Historial de Soluciones</span></a>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Reportes</span> <i class="fa fa-chevron-left pull-right"></i></a>
@@ -71,13 +74,13 @@
                     <li><a href="#"><i class='fa fa-line-chart'></i> Estadisticos</a></li>
                 </ul>
             </li>
-            
+
             <li class="treeview">
                 <a href="#"><i class='fa fa-shield'></i> <span>Seguridad</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.usuarios.index')}}"><i class='fa fa-users'></i> Usuarios</a></li>
                     <li><a href="#"><i class='fa fa-database'></i> Respaldo</a></li>
-                    <li><a href="{{ route('admin.historiales.index')}}"><i class='fa fa-history'></i> Historial</a></li>
+                    <li><a href="{{ route('admin.historiales.index')}}"><i class='fa fa-history'></i> Bitácora de Uso</a></li>
                 </ul>
             </li>
             @endif

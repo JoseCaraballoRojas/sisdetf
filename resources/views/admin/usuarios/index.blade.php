@@ -12,7 +12,6 @@
 			Crear Usuario</a>
     <table class="table table-striped">
         <thead>
-            <th>ID</th>
             <th>Usuario</th>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -23,7 +22,6 @@
         <tbody>
             @foreach($usuarios as $usuario)
                 <tr>
-                    <td>{{ $usuario->id }}</td>
                     <td>{{ $usuario->usuario }}</td>
                     <td>{{ $usuario->nombre }}</td>
                     <td>{{ $usuario->apellido }}</td>
@@ -40,8 +38,10 @@
 						   title="Desactivar Usuario">
 	                          <span class="glyphicon glyphicon-off" aria-hidden="true" ></span>
 	                    </a>
-											
-                         <a href="{{ route('admin.usuarios.edit', $usuario->id) }}" class=" btn btn-warning">
+
+                         <a href="{{ route('admin.usuarios.edit', $usuario->id) }}"
+													  class=" btn btn-primary"
+														title="Editar Usuario">
                            <span class="glyphicon glyphicon-wrench" aria-hidden="true" ></span>
                          </a>
                     </td>

@@ -148,12 +148,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     ]);
 
 //rutas de diagnosticos...
-    Route::resource('diagnosticos', 'DiagnosticosController');
-    
+  
+    Route::get('diagnosticos', [
+    'uses' => 'DiagnosticosController@index',
+    'as' => 'admin.diagnosticos.index'
+    ]);
     //ruta para diagnosticos solucionados
-    Route::get('diagnosticos/solucionadas', 'DiagnosticosController@indexSolucionadas');
 
-   
+    Route::get('diagnosticos/solucionadas', [
+    'uses' => 'DiagnosticosController@indexSolucionadas',
+    'as' => 'admin.diagnosticos.indexSolucionadas'
+    ]);
+
+
     //ruta para home
     Route::get('/home', 'HomeController@index');
 });
