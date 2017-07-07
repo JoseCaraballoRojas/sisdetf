@@ -10,15 +10,13 @@
     </a>
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
-            <th>caracteristica</th>
-            <th>falla</th>
+            <th>Caracteristica</th>
+            <th>Falla</th>
             <th>Accion</th>
         </thead>
         <tbody>
             @foreach($caracteristicas as $caracteristica)
                 <tr>
-                    <td>{{ $caracteristica->id }}</td>
                     <td>{{ $caracteristica->caracteristica }}</td>
                     <td>{{ $caracteristica->falla->falla }}</td>
                     <td> <a href="{{ route('admin.caracteristicas.destroy', $caracteristica->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar la caracteristica ?')" class="btn btn-danger">

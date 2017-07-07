@@ -10,16 +10,14 @@
     </a>
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
-            <th>sugerencia</th>
+            <th>Sugerencia</th>
             <th>Descripción</th>
-            <th>falla</th>
+            <th>Falla</th>
             <th>Acción</th>
         </thead>
         <tbody>
             @foreach($soluciones as $solucion)
                 <tr>
-                    <td>{{ $solucion->id }}</td>
                     <td>{{ $solucion->solucion }}</td>
                     <td>{{ $solucion->descripcion }}</td>
                     <td>{{ $solucion->falla->falla }}</td>

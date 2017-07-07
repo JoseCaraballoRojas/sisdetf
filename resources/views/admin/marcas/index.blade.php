@@ -10,14 +10,12 @@
     </a>
     <table class="table table-striped text-center">
         <thead>
-            <th>ID</th>
-            <th>marca</th>
+            <th>Marca</th>
             <th>Accion</th>
         </thead>
         <tbody>
             @foreach($marcas as $marca)
                 <tr>
-                    <td>{{ $marca->id }}</td>
                     <td>{{ $marca->marca }}</td>
                     <td> <a href="{{ route('admin.marcas.destroy', $marca->id) }}" onclick=" return confirm('¿Seguro que deseas eliminar la marca ?')" class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" ></span>

@@ -10,7 +10,6 @@
     </a>
     <table class="table table-striped ">
         <thead>
-            <th>ID</th>
             <th>Falla</th>
             <th>Descripción</th>
             <th>Tipo</th>
@@ -20,7 +19,6 @@
           @if (count($fallas))
             @foreach($fallas as $falla)
                 <tr>
-                    <td>{{ $falla->id }}</td>
                     <td>{{ $falla->falla }}</td>
                     <td>{{ $falla->descripcion }}</td>
                     <td>{{ $falla->tipo->tipo }}</td>
