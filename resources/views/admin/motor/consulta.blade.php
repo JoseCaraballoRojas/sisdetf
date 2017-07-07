@@ -15,23 +15,28 @@
     <div class="col-md-12 primer_form">
       <h3 class="form-signin-heading text-center"><b>Seleccione el Tipo de Equipo: </b></h3>
     </div>
-      
+
       <div class="col-md-5 col-md-offset-1 primer_form">
         <div class="image">
-            <img src="{{asset('/img/escritorio.jpg')}}" class="img" alt="escritorio Image" />
+          <a href="#" id="imgEscritorio">
+            <img src="{{asset('/img/escritorio.jpg')}}" class="img" alt="escritorio Image"/>
+          </a>
         </div>
-        <div class="form-group">
-            {!! Form::label('escritorio', 'Escritorio', ['class' => 'h3']) !!}
-            {!! Form::radio('tipo', 'escritorio', ['required']) !!}
+        <div class="form-group radios">
+            {!! Form::text('tipo', null, ['required', 'id' => 'tipoEquipoFalla' ]) !!}
+            {{-- !! Form::label('escritorio', 'Escritorio', ['class' => 'h3']) !!}
+            {!! Form::radio('tipo', 'escritorio', ['required', 'id' => 'radioEscritorio']) !!} --}}
         </div>
       </div>
       <div class="col-md-5 col-md-offset-1 primer_form">
         <div class="image">
+          <a href="#" id="imgPortatil">
             <img src="{{asset('/img/laptop.jpg')}}" class="img" alt="laptop Image" />
+          </a>
         </div>
-        <div class="form-group">
-            {!! Form::label('portatil', 'Portatil', ['class' => 'h3']) !!}
-            {!! Form::radio('tipo', 'portatil') !!}
+        <div class="form-group radios">
+            {{-- {!! Form::label('portatil', 'Portatil', ['class' => 'h3']) !!}
+            {!! Form::radio('tipo', 'portatil', ['id' => 'radioPortatil']) !!} --}}
         </div>
       </div>
 
@@ -52,7 +57,7 @@
       </div>
 
     </div>
-    <div class="panel-footer">
+    <div class="panel-footer botones">
         <div class="form-group">
             {!! Form::button('Atras', ['class' => 'btn btn-danger', 'id' => 'btn_atras']) !!}
             {!! Form::submit('Diagnosticar', ['class' => 'btn btn-success', 'id' => 'btn_submit']) !!}

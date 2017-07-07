@@ -4,6 +4,23 @@ $(document).ready(function() {
     $('.segundo_form').hide();
     $('#btn_atras').hide();
     $('#btnSiguienteFalla').hide();
+    $('.radios').hide();
+    $('.botones').hide();
+
+    $('#imgEscritorio').on('click', function () {
+        $('#tipoEquipoFalla').attr('value', 'escritorio');
+        $('#btn_primero').click();
+        var salida = $('#tipoEquipoFalla').attr('value');
+        console.log(salida);
+    });
+
+    $('#imgPortatil').on('click', function () {
+        $('#tipoEquipoFalla').attr('value', 'portatil');
+        $('#btn_primero').click();
+        var salida = $('#tipoEquipoFalla').attr('value');
+        console.log(salida);
+    });
+
 
     $('#btn_primero').on('click', function () {
       $('#btn_primero').hide();
@@ -11,6 +28,7 @@ $(document).ready(function() {
       $('#btn_submit').show();
       $('.segundo_form').show();
       $('#btn_atras').show();
+      $('.botones').show();
 
     })
     $('#btn_atras').on('click', function () {
@@ -19,16 +37,17 @@ $(document).ready(function() {
       $('#btn_submit').hide();
       $('.segundo_form').hide();
       $('#btn_atras').hide();
+      $('.botones').hide();
 
     })
     //para solucion de fallas electricas
    $('.solucion').hide();
    $('.guardar').hide();
 
-   $("input[name=respuesta]").click(function () { 
+   $("input[name=respuesta]").click(function () {
    		if ($('input:radio[name=respuesta]:checked').val() == 'si') {
    			$('.solucion').hide();
-   			$('.guardar').hide();	
+   			$('.guardar').hide();
         $('#id_Falla').attr('value', $('#id_falla').attr('value'));
         $('#tipo_Falla').attr('value', $('#tipoFalla').attr('value'));
         $('#tipo_Equipo').attr('value', $('#tipoEquipo').attr('value'));
@@ -50,18 +69,18 @@ $(document).ready(function() {
           console.log(res.pregunta);
           console.log(res);
           res.forEach(element => {
-              
+
               console.log(element.caracteristica);
             })
-          
+
       });*/
    		};
    		if ($('input:radio[name=respuesta]:checked').val() == 'no') {
    			$('.solucion').show();
-   			$('.guardar').show();	
+   			$('.guardar').show();
    		};
-   		   
-   		
+
+
    })
 
 });

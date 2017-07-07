@@ -19,7 +19,7 @@ class MotorController extends Controller
      */
     public function index()
     {
-         
+
     }
 
     /**
@@ -42,18 +42,18 @@ class MotorController extends Controller
     {
         //dd($request->all());
 
-        if ($request->tipo == 'escritorio') 
+        if ($request->tipo == 'escritorio')
         {
 
           if ($request->enciende == 'no') {
-            
+
             $tipo = Tipo::where('tipo', '=', 'falla electrica' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
@@ -76,16 +76,16 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-          
+
           if ($request->enciende == 'no') {
-            
+
             $tipo = Tipo::where('tipo', '=', 'falla electrica' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
 
@@ -106,27 +106,27 @@ class MotorController extends Controller
           }
 
         }
-            
-        
-         
+
+
+
     }
 
     public function fallaVideo(Request $request)
     {
         //dd($request->all());
 
-        if ($request->tipo == 'escritorio') 
+        if ($request->tipo == 'escritorio')
         {
 
           if ($request->video == 'no') {
 
             $tipo = Tipo::where('tipo', '=', 'falla de video' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
@@ -149,16 +149,16 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-           
+
              if ($request->video == 'no') {
 
             $tipo = Tipo::where('tipo', '=', 'falla de video' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
@@ -179,25 +179,25 @@ class MotorController extends Controller
           }
 
         }
-        
+
     }
 
     public function fallaArranque(Request $request)
     {
         //dd($request->all());
 
-        if ($request->tipo == 'escritorio') 
+        if ($request->tipo == 'escritorio')
         {
 
           if ($request->arranque == 'no') {
 
             $tipo = Tipo::where('tipo', '=', 'falla de arranque' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
@@ -221,16 +221,16 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-            
+
             if ($request->arranque == 'no') {
 
             $tipo = Tipo::where('tipo', '=', 'falla de arranque' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
 
@@ -253,21 +253,21 @@ class MotorController extends Controller
           }
 
         }
-        
+
     }
 
      public function fallaSO(Request $request)
     {
         //dd($request->all());
 
-        if ($request->tipo == 'escritorio') 
+        if ($request->tipo == 'escritorio')
         {
 
           if ($request->so == 'no') {
 
                 $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
                 $id = 0;
-                
+
                 foreach ($tipo as $val) {
                     $id = $val->id;
                 }
@@ -276,7 +276,7 @@ class MotorController extends Controller
                                 ->where('falla', '=', 'no inicia sistema operativo' )
                                 ->where('tipo_Equipo', '=', 'escritorio')
                                 ->first();
-                
+
                 $fallas2->each(function ($fallas2){
                     $fallas2->caracteristicas;
                     $fallas2->soluciones;
@@ -292,11 +292,11 @@ class MotorController extends Controller
 
             $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'escritorio')->paginate(5);
 
@@ -314,12 +314,12 @@ class MotorController extends Controller
 
         }
         elseif ($request->tipo == 'portatil') {
-            
+
             if ($request->so == 'no') {
 
                 $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
                 $id = 0;
-                
+
                 foreach ($tipo as $val) {
                     $id = $val->id;
                 }
@@ -328,7 +328,7 @@ class MotorController extends Controller
                                 ->where('falla', '=', 'no inicia sistema operativo' )
                                 ->where('tipo_Equipo', '=', 'portatil')
                                 ->first();
-                
+
                 $fallas2->each(function ($fallas2){
                     $fallas2->caracteristicas;
                     $fallas2->soluciones;
@@ -344,11 +344,11 @@ class MotorController extends Controller
 
             $tipo = Tipo::where('tipo', '=', 'falla de sistema operativo' )->get();
             $id = 0;
-            
+
             foreach ($tipo as $val) {
                 $id = $val->id;
             }
-            
+
             $fallas = Falla::where('idTipoFK', '=', $id )
                     ->where('tipo_Equipo', '=', 'portatil')->paginate(5);
 
@@ -365,7 +365,7 @@ class MotorController extends Controller
           }
 
         }
-        
+
     }
 
     public function guardar(Request $request)
