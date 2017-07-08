@@ -162,7 +162,7 @@ return [
          Collective\Html\HtmlServiceProvider::class,
          Laracasts\Flash\FlashServiceProvider::class,
          Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
-
+         Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -215,6 +215,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
 
     ],
 

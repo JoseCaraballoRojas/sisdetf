@@ -69,9 +69,23 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class='fa fa-file-pdf-o'></i> Pdf</a></li>
-                    <li><a href="#"><i class='fa fa-pie-chart'></i> Graficos</a></li>
-                    <li><a href="#"><i class='fa fa-line-chart'></i> Estadisticos</a></li>
+                    <li class="treeview">
+                      <a href="#"><i class='fa fa-file-pdf-o'></i> <span>Pdf</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                          <li>
+                            <a href="{{ route('admin.reportes.equipos')}}"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</span></a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                      <a href="#"><i class='fa fa-pie-chart'></i> <span> Graficos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                      <ul class="treeview-menu">
+                        <li>
+                          <a href="{{ route('admin.reportes.equipos')}}"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</a>
+                        </li>
+                      </ul>
+                    </li>
+
                 </ul>
             </li>
 
@@ -84,6 +98,9 @@
                 </ul>
             </li>
             @endif
+            <li class="treeview">
+                <a href="{{-- route('admin.diagnosticos.indexSolucionadas')--}}#"><i class='fa fa-question-circle'></i> <span>Ayuda</span></a>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

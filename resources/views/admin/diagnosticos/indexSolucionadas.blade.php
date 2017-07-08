@@ -17,7 +17,7 @@
         <tbody>
           @if (count($diagnosticos))
             @foreach($diagnosticos as $diagnostico)
-                <tr>  
+                <tr>
                     <td>{{ $diagnostico->falla->falla }}</td>
                     <td>{{ $diagnostico->tipo }}</td>
                     <td class="text-success">
@@ -30,7 +30,7 @@
             @endforeach
           @else
               <tr>
-                  <td colspan="5"><em>No hay diagnosticos registradas en la base de datos</em></td>
+                  <td colspan="6"><em>No hay diagnosticos registradas en la base de datos</em></td>
               </tr>
           @endif
         </tbody>

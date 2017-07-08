@@ -148,7 +148,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     ]);
 
 //rutas de diagnosticos...
-  
+
     Route::get('diagnosticos', [
     'uses' => 'DiagnosticosController@index',
     'as' => 'admin.diagnosticos.index'
@@ -158,6 +158,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('diagnosticos/solucionadas', [
     'uses' => 'DiagnosticosController@indexSolucionadas',
     'as' => 'admin.diagnosticos.indexSolucionadas'
+    ]);
+
+    //rutas para  Reportes
+    Route::get('reportes/equipos', [
+    'uses' => 'ReportesController@equipos',
+    'as' => 'admin.reportes.equipos'
     ]);
 
 
