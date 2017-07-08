@@ -28,7 +28,7 @@ class ReportesController extends Controller
         //dd($equipos);
         $pdf = PDF::loadView('admin.reportes.equipos', ['equipos' => $equipos])->setPaper('letter');
         //dd($pdf);
-        return $pdf->download('equipos.pdf');
+          return $pdf->stream();
 
     }
 

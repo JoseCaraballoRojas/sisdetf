@@ -73,7 +73,7 @@
                       <a href="#"><i class='fa fa-file-pdf-o'></i> <span>Pdf</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                           <li>
-                            <a href="{{ route('admin.reportes.equipos')}}"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</span></a>
+                            <a href="{{ route('admin.reportes.equipos')}}" target="_blank"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</span></a>
                           </li>
                         </ul>
                     </li>
