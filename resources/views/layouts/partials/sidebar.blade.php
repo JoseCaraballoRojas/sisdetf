@@ -75,6 +75,15 @@
                           <li>
                             <a href="{{ route('admin.reportes.equipos')}}" target="_blank"> <span class="fa fa-desktop" aria-hidden="true"> Equipos</span></a>
                           </li>
+                          <li>
+                            <a href="{{ route('admin.reportes.usuarios')}}" target="_blank"> <span class="fa fa-users" aria-hidden="true"> Usuarios</span></a>
+                          </li>
+                          <li>
+                            <a href="{{ route('admin.reportes.fallas')}}" target="_blank"> <span class="fa fa-exclamation-triangle" aria-hidden="true"> Fallas</span></a>
+                          </li>
+                          <li>
+                            <a href="{{ route('admin.reportes.fallasSolucionadas')}}" target="_blank"> <span class="fa fa-check-square-o" aria-hidden="true"> Fallas solucionadas</span></a>
+                          </li>
                         </ul>
                     </li>
                     <li class="treeview">

@@ -30,7 +30,7 @@
             @endforeach
           @else
               <tr>
-                  <td colspan="6"><em>No hay diagnosticos registradas en la base de datos</em></td>
+                  <td colspan="6"><em>No hay diagnosticos registrados en la base de datos</em></td>
               </tr>
           @endif
         </tbody>

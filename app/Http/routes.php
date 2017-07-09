@@ -166,6 +166,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     'as' => 'admin.reportes.equipos'
     ]);
 
+    Route::get('reportes/usuarios', [
+    'uses' => 'ReportesController@usuarios',
+    'as' => 'admin.reportes.usuarios'
+    ]);
+
+    Route::get('reportes/fallas', [
+    'uses' => 'ReportesController@fallas',
+    'as' => 'admin.reportes.fallas'
+    ]);
+
+    Route::get('reportes/fallasSolucionadas', [
+    'uses' => 'ReportesController@fallasSolucionadas',
+    'as' => 'admin.reportes.fallasSolucionadas'
+    ]);
+
 
     //ruta para home
     Route::get('/home', 'HomeController@index');

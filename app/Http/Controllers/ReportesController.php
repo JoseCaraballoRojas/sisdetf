@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Equipo;
+use App\Usuario;
+use App\Falla;
+use App\Diagnostico;
 
 use PDF;
 
@@ -25,76 +28,58 @@ class ReportesController extends Controller
         $equipos->each(function ($equipos){
             $equipos->modelo;
         });
-        //dd($equipos);
+
         $pdf = PDF::loadView('admin.reportes.equipos', ['equipos' => $equipos])->setPaper('letter');
-        //dd($pdf);
+
           return $pdf->stream();
 
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Lista de usuarios registrados.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function usuarios()
     {
-        //
+
+        $usuarios = Usuario::orderBy('id', 'DESC')->get();
+
+        $pdf = PDF::loadView('admin.reportes.usuarios', ['usuarios' => $usuarios])->setPaper('letter');
+
+          return $pdf->stream();
+
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Lista de fallas registradas.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function fallas()
     {
-        //
+
+        $fallas = Falla::orderBy('id', 'DESC')->get();
+
+        $pdf = PDF::loadView('admin.reportes.fallas', ['fallas' => $fallas])->setPaper('letter');
+
+          return $pdf->stream();
+
     }
 
     /**
-     * Display the specified resource.
+     * Lista de fallas solucionadas registradas.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function fallasSolucionadas()
     {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $diagnosticos = Diagnostico::where('estatus', '=', 'solucionada')->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $pdf = PDF::loadView('admin.reportes.fallasSolucionadas', ['diagnosticos' => $diagnosticos])->setPaper('letter');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+          return $pdf->stream();
+
     }
 }
